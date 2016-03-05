@@ -2,6 +2,9 @@
 var LEVELS = [
 	{
 		"name": "Level 1: The Startening",
+		"width": 300,
+		"height": 300,
+		"bgImage": "images/bgs/testBg.png",
 		"playerStart": {
 			"x": 0,
 			"y": 0
