@@ -1,13 +1,19 @@
 "use strict"
 
 var scaleFactor;
-var bgCanvas;
-var platformCanvas;
-var gameObjectCanvas;
+var ctx;
+var canvas;
 var _player;
 
-function Game() {
 
+function Game(canvas_) {
+	
+	canvas = canvas_;
+	ctx = canvas.getContext("2d");
+
+	//_player = makePlayer();
+	//need to get scaleFactor
+	//need to generate gameObjects based on 
 }
 
 function loadLevel() {
