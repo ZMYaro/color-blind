@@ -19,7 +19,9 @@ var LEVELS = [
 		}, {
 			"type": "bolt",
 			"x": 2,
-			"y": 1
+			"y": 1,
+			"width": 2,
+			"height": 2
 		}]
 	}
 ];

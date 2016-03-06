@@ -47,7 +47,7 @@ var Game = (function () {
 						newObj = new Platform(objDef.x, objDef.y, objDef.width, objDef.height, objDef.color);
 						break;
 					case 'bolt':
-						// TODO
+						newObj = new Bolt(objDef.x, objDef.y, objDef.width, objDef.height);
 						break;
 					default:
 						return; // Continue the for-each loop.
