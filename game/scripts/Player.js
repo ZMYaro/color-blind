@@ -12,12 +12,13 @@ var Player = (function() {
 		this.xSpeed = 0;
 		this.ySpeed = 0;
 		
-		this._spriteSheet = null;
+		this._spriteSheet = Player.SPRITE_SHEET;
 		this._spriteWidth = 0;
 		this._spriteHeight = 0;
 	}
 	
 	// Constants
+	Player.SPRITE_SHEET = 'sprite_sheets/chroma.png';
 	Player.WIDTH = 1;
 	Player.HEIGHT = 2;
 	/** {Number} Acceleration while not moving */

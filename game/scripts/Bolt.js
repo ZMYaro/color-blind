@@ -11,9 +11,10 @@ var Bolt = (function() {
 	function Bolt(x, y, width, height) {
 		Collectible.apply(this, arguments);
 
-		this._spriteSheet = "bolt.png";
+		this._spriteSheet = Bolt.SPRITE_SHEET;
 	}
 	
+	Bolt.SPRITE_SHEET = 'sprite_sheets/nut.png';
 	Bolt.SIZE = 1;
 	
 	Bolt.prototype = Object.create(Collectible.prototype);

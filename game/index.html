@@ -23,7 +23,31 @@
 		<script type="text/javascript">
 			var MENU_LEVEL = LEVELS[0];
 			
-			window.onload = function () {
+			window.onload = preloadImages;
+			
+			function preloadImages() {
+				var progressBar = document.getElementById('loadProgress'),
+					imagesLoaded = 0,
+					imageNames = [
+						Player.SPRITE_SHEET,
+						Bolt.SPRITE_SHEET
+					];
+				
+				progressBar.max = imageNames.length;
+				
+				imageNames.forEach(function (imageName) {
+					imageManager.loadImage(imageName, function () {
+						imagesLoaded++;
+						progressBar.value = imagesLoaded;
+						if (imagesLoaded === imageNames.length) {
+							startGame();
+							progressBar.style.display = 'none';
+						}
+					});
+				});
+			}
+			
+			function startGame() {
 				var canvas = document.getElementById('gameCanvas'),
 					game = new Game(canvas);
 				
@@ -34,5 +58,6 @@
 	</head>
 	<body>
 		<canvas id="gameCanvas"></canvas>
+		<progress id="loadProgress" />
 	</body>
 </html>
