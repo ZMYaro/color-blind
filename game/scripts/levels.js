@@ -17,6 +17,13 @@ var LEVELS = [
 			"height": 4,
 			"color": "#ffff00"
 		}, {
+			"type": "platform",
+			"x": 2,
+			"y": 11,
+			"width": 2,
+			"height": 1,
+			"color": "#ffff00"
+		}, {
 			"type": "bolt",
 			"x": 2,
 			"y": 1,

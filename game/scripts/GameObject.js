@@ -21,6 +21,14 @@ var GameObject = (function () {
 	}
 	
 	GameObject.prototype = {
+		get right() {
+			return this.x + this.width;
+		},
+		
+		get bottom() {
+			return this.y + this.height;
+		},
+		
 		/**
 		 * Update the object.
 		 * @abstract

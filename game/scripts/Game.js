@@ -21,7 +21,8 @@ var Game = (function () {
 		this._levelWidth = 1;
 		this._levelHeight = 1;
 		this._player = new Player();
-		this._gameObjects = [];
+		this._platforms = [];
+		this._collectibles = [];
 		
 		// Initialize the input manager.
 		this._inputManager = new InputManager();
@@ -50,22 +51,21 @@ var Game = (function () {
 			this._player.x = levelJSON.playerStart.x;
 			this._player.y = levelJSON.playerStart.y;
 			
-			this._gameObjects = [];
+			this._platforms = [];
+			this._collectibles = [];
 			
 			var that = this;
 			levelJSON.objects.forEach(function (objDef) {
-				var newObj;
 				switch (objDef.type) {
 					case 'platform':
-						newObj = new Platform(objDef.x, objDef.y, objDef.width, objDef.height, objDef.color);
+						that._platforms.push(new Platform(objDef.x, objDef.y, objDef.width, objDef.height, objDef.color));
 						break;
 					case 'bolt':
-						newObj = new Bolt(objDef.x, objDef.y, objDef.width, objDef.height);
+						that._collectibles.push(new Bolt(objDef.x, objDef.y, objDef.width, objDef.height));
 						break;
 					default:
 						return; // Continue the for-each loop.
 				}
-				that._gameObjects.push(newObj);
 			});
 			
 			// Update the scale factor for the new level.
@@ -99,19 +99,52 @@ var Game = (function () {
 		 * Update game objects.
 		 */
 		_update: function () {
+			var that = this;
+			
 			this._player.update(this._inputManager);
+			
+			// Check platform collisions.
+			that._player.onGround = false;
+			this._platforms.forEach(function (platform) {
+				if (colliding(platform, that._player)) {
+					if (that._player.bottom > platform.y &&
+							that._player.y < platform.y &&
+							that._player.bottom - platform.y < Player.MAX_FALL_SPEED) {
+						// If player is through the platform, put the player on top of the platform.
+						that._player.y -= (that._player.bottom - platform.y);
+						that._player.onGround = true;
+					} else if (that._player.y < platform.bottom &&
+							that._player.bottom > platform.bottom &&
+							platform.bottom - that._player.y < Player.MAX_FALL_SPEED) {
+						// If the player hits the platform from below, stop the player.
+						that._player.y += (platform.bottom - that._player.y);
+					} else if (that._player.right < platform.x + 0.5) {
+						// Check collisions from the left.
+						that._player.x -= (that._player.right - platform.x);
+					} else if (that._player.x > platform.right - 0.5) {
+						// Check collisions from the right.
+						that._player.x += (platform.right - that._player.x);
+					}
+				}
+			});
 		},
 		
 		/**
 		 * Draw game objects to the canvas.
 		 */
 		_draw: function () {
+			var that = this;
+			
 			this._update();
 			
 			this._ctx.clearRect(0, 0, this._canvas.width, this._canvas.height);
 			
-			for (var i = 0; i < this._gameObjects.length; i++)
-				this._gameObjects[i].draw(this._ctx, this._scaleFactor);
+			this._platforms.forEach(function (platform) {
+				platform.draw(that._ctx, that._scaleFactor);
+			});
+			this._collectibles.forEach(function (collectible) {
+				collectible.draw(that._ctx, that._scaleFactor);
+			});
 			
 			this._player.draw(this._ctx, this._scaleFactor);
 			

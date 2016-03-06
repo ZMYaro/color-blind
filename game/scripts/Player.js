@@ -7,6 +7,8 @@ var Player = (function() {
 	function Player() {
 		GameObject.call(this, 0, 0, Player.WIDTH, Player.HEIGHT);
 		
+		this.onGround = true;
+		
 		this._xSpeed = 0;
 		this._ySpeed = 0;
 		
@@ -24,6 +26,8 @@ var Player = (function() {
 	Player.MAX_WALK_SPEED = 0.1;
 	/** {Number} Maximum speed while running */
 	Player.MAX_RUN_SPEED = 0.6;
+	/** {Number} Maximum vertical speed */
+	Player.MAX_FALL_SPEED = 0.6;
 	/** {Number} The speed at which to consider the player stopped */
 	Player.STOP_THRESHOLD;
 
@@ -52,6 +56,12 @@ var Player = (function() {
 			} else {
 				this._xSpeed = 0;
 			}
+		}
+		
+		if (this.onGround) {
+			this._ySpeed = 0;
+		} else {
+			this._ySpeed += Player.ACCELERATION;
 		}
 		
 		this.x += this._xSpeed;
