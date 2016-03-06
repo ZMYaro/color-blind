@@ -31,7 +31,6 @@ var GamepadManager = (function () {
 			var leftActive = false;
 			this._getStandardGamepads().forEach(function (gamepad) {
 				LEFT_BUTTONS.forEach(function (buttonCode) {
-					console.log(gamepad.buttons);
 					if (gamepad.buttons[buttonCode].pressed) {
 						leftActive = true;
 					}

@@ -44,7 +44,7 @@ var InputManager = (function () {
 		 */
 		enable: function () {
 			this._keyboardManager.enable();
-			this._gamepadManager.enable();
+			//this._gamepadManager.enable();
 		},
 		
 		/**
@@ -52,7 +52,7 @@ var InputManager = (function () {
 		 */
 		disable: function () {
 			this._keyboardManager.disable();
-			this._gamepadManager.disable();
+			//this._gamepadManager.disable();
 		}
 	};
 	
