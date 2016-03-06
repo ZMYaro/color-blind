@@ -3,53 +3,175 @@ var LEVELS = [
 	{
 		"name": "Main Menu",
 		"width": 40,
-		"height": 15,
+		"height": 16,
 		"bgColor": "lightgray",
 		"bgImage": "images/bgs/testBg.png",
+		"visRadiusColor": "darkgray",
 		"playerStart": {
-			"x": 3,
-			"y": 6
+			"x": 4,
+			"y": 10
 		},
 		"objects": [
 			{
 				"type": "platform",
 				"x": 0,
-				"y": 9,
+				"y": 12,
 				"width": 80,
 				"height": 4,
-				"color": "#ffff00"
-			}, { // door eventually
-				"type": "bolt",
-				"x": 10,
-				"y": 6,
-				"width": 2,
-				"height": 4
+				"color": "darkgray"
 			}, {
-				"type": "bolt",
-				"x": 20,
-				"y": 6,
-				"width": 2,
-				"height": 4
+				"type": "platform",
+				"x": 25,
+				"y": 9,
+				"width": 3,
+				"height": 1,
+				"color": "darkgray"
 			}, {
-				"type": "bolt",
+				"type": "door",
+				"x": 26,
+				"y": 7,
+				"levelNum": 1
+			}, {
+				"type": "platform",
 				"x": 30,
-				"y": 6,
-				"width": 2,
-				"height": 4
+				"y": 9,
+				"width": 3,
+				"height": 1,
+				"color": "darkgray"
 			}, {
-				"type": "bigPart",
-				"x": 40,
-				"y": 6,
-				"width": 2,
-				"height": 4
+				"type": "door",
+				"x": 31,
+				"y": 7,
+				"levelNum": 2
+			}, {
+				"type": "platform",
+				"x": 35,
+				"y": 9,
+				"width": 3,
+				"height": 1,
+				"color": "darkgray"
+			}, {
+				"type": "door",
+				"x": 36,
+				"y": 7,
+				"levelNum": 3
 			}
 		]
 	}, {
 		"name": "Level 1: The Startening",
+		"width": 43,
+		"height": 16,
+		"bgColor": "lightgray",
+		"visRadiusColor": "darkgray",
+		"playerStart": {
+			"x": 5,
+			"y": 10
+		},
+		"objects": [
+			{
+				"type": "platform",
+				"x": 0,
+				"y": 13,
+				"width": 19,
+				"height": 3,
+				"color": "darkgray"
+			}, {
+				"type": "platform",
+				"x": 13,
+				"y": 13,
+				"width": 6,
+				"height": 1,
+				"color": "darkgray"
+			}, {
+				"type": "platform",
+				"x": 14,
+				"y": 12,
+				"width": 5,
+				"height": 1,
+				"color": "darkgray"
+			}, {
+				"type": "platform",
+				"x": 15,
+				"y": 11,
+				"width": 4,
+				"height": 1,
+				"color": "darkgray"
+			}, {
+				"type": "platform",
+				"x": 16,
+				"y": 10,
+				"width": 3,
+				"height": 1,
+				"color": "darkgray"
+			}, {
+				"type": "platform",
+				"x": 19,
+				"y": 10,
+				"width": 1,
+				"height": 6,
+				"color": "darkgray"
+			}, {
+				"type": "platform",
+				"x": 23,
+				"y": 10,
+				"width": 20,
+				"height": 6,
+				"color": "darkgray"
+			}, {
+				"type": "platform",
+				"x": 33,
+				"y": 9,
+				"width": 10,
+				"height": 1,
+				"color": "darkgray"
+			}, {
+				"type": "platform",
+				"x": 34,
+				"y": 8,
+				"width": 9,
+				"height": 1,
+				"color": "darkgray"
+			}, {
+				"type": "platform",
+				"x": 35,
+				"y": 7,
+				"width": 8,
+				"height": 1,
+				"color": "darkgray"
+			}, {
+				"type": "platform",
+				"x": 36,
+				"y": 6,
+				"width": 7,
+				"height": 1,
+				"color": "darkgray"
+			}, {
+				"type": "platform",
+				"x": 37,
+				"y": 7,
+				"width": 6,
+				"height": 1,
+				"color": "darkgray"
+			}, {
+				"type": "platform",
+				"x": 38,
+				"y": 6,
+				"width": 5,
+				"height": 1,
+				"color": "darkgray"
+			}, {
+				"type": "bigPart",
+				"x": 41,
+				"y": 4
+			}
+		]
+	}, {
+		"name": "Level 2: Chromacide",
 		"width": 70,
 		"height": 30,
 		"bgColor": "yellow",
 		"bgImage": "images/bgs/testBg.png",
+		"visRadiusColor": "darkred",
 		"playerStart": {
 			"x": 2,
 			"y": 8
@@ -132,7 +254,7 @@ var LEVELS = [
 			}
 		]
 	}, {
-		"name": "Level 3: Thread the needle",
+		"name": "Level 3: Thread The Needle",
 		"width": 40,
 		"height": 40,
 		"bgImage": "images/bgs/testBg.png",
@@ -369,7 +491,7 @@ var LEVELS = [
 			}
 		]
 	}, {
-		"name": "Level 4: Choices",
+		"name": "Level 5: Choices",
 		"width": 60,
 		"height": 60,
 		"bgImage": "images/bgs/testBg.png",
