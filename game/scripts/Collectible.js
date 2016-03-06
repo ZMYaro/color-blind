@@ -1,40 +1,25 @@
-"use strict"
-
-function makeCollectible() {
-	var Collectibe;
-	return Collectibe = {
-		x : 0,
-		y : 0,
-		width : 0, 
-		height : 0,
-		_spriteSheet : null,
-		_spriteWidth : 0,
-		_spriteHeight : 0,
-
-
-		/**
-		* updates the game object
-		* @param {player} player - the player object
-		*/
-		update: function(player) {
-
-		}, // end update function
-
-		/**
-		* draws the object to the screen
-		* @param {DrawingContext} ctx - the drawing context on which the collectible will be drawn
-		* @param {int} scale - represents the screen size, allows proper resizing
-		*/
-		draw: function(ctx, scale) {
-
-		}, // end draw function
-
-		/**
-		* activates upon the collectible being collided with
-		*/
-		_onPickup: function() {
-
-		}, // end _onPickup function
-
+var Collectible = (function () {
+	'use strict';
+	
+	/**
+	 * Initialize a new abstract Collectible.
+	 * @param {Number} x
+	 * @param {Number} y
+	 * @param {Number} width
+	 * @param {Number} height
+	 * @abstract
+	 */
+	function Collectible(x, y, width, height) {
+		GameObject.apply(this, arguments);
 	}
-}
+	
+	Collectible.prototype = Object.create(GameObject.prototype);
+	
+	/**
+	 * Handle the collectible being collected.
+	 */
+	Collectible.prototype.onCollect = function () {
+	}
+	
+	return Collectible;
+})();

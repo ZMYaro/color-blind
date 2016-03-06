@@ -1,33 +1,43 @@
-"use strict"
-
-function makeGameObject() {
-	var GameObj;
-	return GameObj = {
-		x : 0,
-		y : 0,
-		width : 0, 
-		height : 0,
-		_spriteSheet : null,
-		_spriteWidth : 0,
-		_spriteHeight : 0,
-
-
-		/**
-		* updates the game object
-		* @param {player} player - the player object
-		*/
-		update: function(player) {
-
-		}, // end update function
-
-		/**
-		* draws the object to the screen
-		* @param {DrawingContext} ctx - the drawing context on which the collectible will be drawn
-		* @param {int} scale - represents the screen size, allows proper resizing
-		*/
-		draw: function(ctx, scale) {
-
-		}, // end draw function
-
+var GameObject = (function () {
+	'use strict';
+	
+	/**
+	 * Initialize a new abstract GameObject.
+	 * @param {Number} x
+	 * @param {Number} y
+	 * @param {Number} width
+	 * @param {Number} height
+	 * @abstract
+	 */
+	function GameObject(x, y, width, height) {
+		this._x = x;
+		this._y = y;
+		this._width = width;
+		this._height = height;
+		
+		this._spriteSheet = undefined;
+		this._spriteWidth = 0;
+		this._spriteHeight = 0;
 	}
-}
+	
+	GameObject.prototype = {
+		/**
+		 * Update the object.
+		 * @param {Player} player
+		 * @abstract
+		 */
+		update: function(player) {
+		},
+
+		/**
+		 * Draw the object to the game canvas.
+		 * @param {CanvasRenderingContext2D} ctx - The rendering context of the game canvas
+		 * @param {Number} scaleFactor - The ratio of pixel to game grid square
+		 * @abstract
+		 */
+		draw: function(ctx, scaleFactor) {
+		}
+	}
+	
+	return GameObject;
+})();
