@@ -162,12 +162,10 @@ var Game = (function () {
 			if (this._player.x + this._screenScroll < Game.SCREEN_SCROLL_THRESHOLD &&
 					this._player.right + this._screenScroll <= window.innerWidth / this._scaleFactor - Game.SCREEN_SCROLL_THRESHOLD &&
 					this._player.x > Game.SCREEN_SCROLL_THRESHOLD) {
-				console.log('aoeu');
 				this._screenScroll += Game.SCREEN_SCROLL_THRESHOLD - (this._player.x + this._screenScroll);
 			} else if (this._player.right + this._screenScroll > window.innerWidth / this._scaleFactor - Game.SCREEN_SCROLL_THRESHOLD &&
 					this._player.x + this._screenScroll >= Game.SCREEN_SCROLL_THRESHOLD &&
 					this._player.right < this._levelWidth - Game.SCREEN_SCROLL_THRESHOLD) {
-				console.log('htns');
 				this._screenScroll += window.innerWidth / this._scaleFactor - Game.SCREEN_SCROLL_THRESHOLD - (this._player.right + this._screenScroll);
 			}
 			
