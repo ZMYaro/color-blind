@@ -35,9 +35,13 @@ var Game = (function () {
 		
 		// Create bound functions for event listeners.
 		this._boundResize = this.resize.bind(this);
+		this._boundPause = this.pause.bind(this);
+		this._boundResume = this.resume.bind(this);
 		this._boundDraw = this._draw.bind(this);
 		
 		window.addEventListener('resize', this._boundResize, false);
+		window.addEventListener('blur', this._boundPause, false);
+		window.addEventListener('focus', this._boundResume, false);
 		raf(this._boundDraw);
 		
 		return this;
@@ -101,6 +105,7 @@ var Game = (function () {
 		 */
 		pause: function () {
 			this._inputManager.disable();
+			this._paused = true;
 		},
 		
 		/**
@@ -108,6 +113,7 @@ var Game = (function () {
 		 */
 		resume: function () {
 			this._inputManager.enable();
+			this._paused = false;
 		},
 		
 		/**
@@ -123,6 +129,10 @@ var Game = (function () {
 		 * Update game objects.
 		 */
 		_update: function () {
+			if (this._paused) {
+				return;
+			}
+			
 			var that = this;
 			
 			if (this._player.y > this._levelHeight + 2) {
