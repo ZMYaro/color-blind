@@ -3,14 +3,24 @@
 	<head>
 		<title>Color Blind</title>
 		
+		<link rel="stylesheet" type="text/css" href="styles/styles.css" />
+		
+		<script type="text/javascript" src="scripts/levels.js"></script>
+		
 		<script type="text/javascript" src="scripts/Game.js"></script>
 		<script type="text/javascript" src="scripts/GameObject.js"></script>
 		<script type="text/javascript" src="scripts/Collectible.js"></script>
 		<script type="text/javascript" src="scripts/Player.js"></script>
 		
 		<script type="text/javascript">
-			var canvas = document.getElementById('gameCanvas'),
-				game = new Game(canvas);
+			var MENU_LEVEL = LEVELS[0];
+			
+			window.onload = function () {
+				var canvas = document.getElementById('gameCanvas'),
+					game = new Game(canvas);
+				
+				game.loadLevel(MENU_LEVEL);
+			}
 		</script>
 	</head>
 	<body>
