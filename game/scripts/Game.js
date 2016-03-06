@@ -98,6 +98,9 @@ var Game = (function () {
 			this._player.xSpeed = 0;
 			this._player.ySpeed = 0;
 			this._screenScroll = 0;
+			this._collectibles.forEach(function (collectible) {
+				collectible.collected = false;
+			});
 		},
 		
 		/**
@@ -138,6 +141,7 @@ var Game = (function () {
 			if (this._player.y > this._levelHeight + 2) {
 				// Die when off the bottom of the screen.
 				this.resetLevel();
+				return;
 			} else {
 				this._player.update(this._inputManager);
 				
@@ -167,6 +171,12 @@ var Game = (function () {
 					}
 				});
 			}
+			
+			this._collectibles.forEach(function (collectible) {
+				if (!collectible.collected && colliding(collectible, that._player)) {
+					collectible.collect(that);
+				}
+			});
 		},
 		
 		/**
