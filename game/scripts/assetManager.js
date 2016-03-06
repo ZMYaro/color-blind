@@ -1,7 +1,8 @@
 'use strict';
 var assetManager = (function () {
 	
-	var IMAGES_DIR = 'images/';
+	var AUDIO_DIR = 'audio/',
+		IMAGES_DIR = 'images/';
 	
 	var assetManager = {
 		/** {Object<String,Audio>} A map of file names to audio files */
