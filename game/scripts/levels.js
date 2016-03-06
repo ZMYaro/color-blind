@@ -2,7 +2,7 @@
 var LEVELS = [
 	{
 		"name": "Main Menu",
-		"width": 40,
+		"width": 60,
 		"height": 16,
 		"bgColor": "lightgray",
 		"bgImage": "images/bgs/testBg.png",
@@ -55,6 +55,30 @@ var LEVELS = [
 				"x": 36,
 				"y": 7,
 				"levelNum": 3
+			}, {
+				"type": "platform",
+				"x": 40,
+				"y": 9,
+				"width": 3,
+				"height": 1,
+				"color": "darkgray"
+			}, {
+				"type": "door",
+				"x": 41,
+				"y": 7,
+				"levelNum": 4
+			}, {
+				"type": "platform",
+				"x": 45,
+				"y": 9,
+				"width": 3,
+				"height": 1,
+				"color": "darkgray"
+			}, {
+				"type": "door",
+				"x": 46,
+				"y": 7,
+				"levelNum": 5
 			}
 		]
 	}, {
@@ -171,7 +195,7 @@ var LEVELS = [
 		"height": 30,
 		"bgColor": "yellow",
 		"bgImage": "images/bgs/testBg.png",
-		"visRadiusColor": "darkred",
+		"visRadiusColor": "#ff20e0",
 		"playerStart": {
 			"x": 2,
 			"y": 8
@@ -257,7 +281,9 @@ var LEVELS = [
 		"name": "Level 3: Thread The Needle",
 		"width": 40,
 		"height": 40,
+		"bgColor": "blue",
 		"bgImage": "images/bgs/testBg.png",
+		"visRadiusColor": "red",
 		"playerStart": {
 			"x": 2,
 			"y": 16
@@ -269,140 +295,140 @@ var LEVELS = [
 				"y": 0,
 				"width": 1,
 				"height": 18,
-				"color": "#ffff00"
+				"color": "blue"
 			}, {
 				"type": "platform",
 				"x": 0,
 				"y": 18,
 				"width": 21,
 				"height": 1,
-				"color": "#ffff00"
+				"color": "blue"
 			}, {
 				"type": "platform",
 				"x": 1,
 				"y": 15,
 				"width": 3,
 				"height": 1,
-				"color": "#ffff00"
+				"color": "blue"
 			}, {
 				"type": "platform",
 				"x": 1,
 				"y": 13,
 				"width": 2,
 				"height": 1,
-				"color": "#ffff00"
+				"color": "blue"
 			}, {
 				"type": "platform",
 				"x": 1,
 				"y": 11,
 				"width": 1,
 				"height": 1,
-				"color": "#ffff00"
+				"color": "blue"
 			}, {
 				"type": "platform",
 				"x": 3,
 				"y": 9,
 				"width": 1,
 				"height": 1,
-				"color": "#ffff00"
+				"color": "blue"
 			}, {
 				"type": "platform",
 				"x": 1,
 				"y": 6,
 				"width": 1,
 				"height": 1,
-				"color": "#ffff00"
+				"color": "blue"
 			}, {
 				"type": "platform",
 				"x": 2,
 				"y": 3,
 				"width": 3,
 				"height": 1,
-				"color": "#ffff00"
+				"color": "blue"
 			}, {
 				"type": "platform",
 				"x": 5,
 				"y": 11,
 				"width": 1,
 				"height": 7,
-				"color": "#ffff00"
+				"color": "blue"
 			}, {
 				"type": "platform",
 				"x": 5,
 				"y": 0,
 				"width": 1,
 				"height": 8,
-				"color": "#ffff00"
+				"color": "blue"
 			}, {
 				"type": "platform",
 				"x": 5,
 				"y": 11,
 				"width": 6,
 				"height": 1,
-				"color": "#ffff00"
+				"color": "blue"
 			}, {
 				"type": "platform",
 				"x": 11,
 				"y": 9,
 				"width": 1,
 				"height": 3,
-				"color": "#ffff00"
+				"color": "blue"
 			}, {
 				"type": "platform",
 				"x": 9,
 				"y": 15,
 				"width": 2,
 				"height": 1,
-				"color": "#ffff00"
+				"color": "blue"
 			}, {
 				"type": "platform",
 				"x": 9,
 				"y": 15,
 				"width": 1,
 				"height": 3,
-				"color": "#ffff00"
+				"color": "blue"
 			}, {
 				"type": "platform",
 				"x": 13,
 				"y": 15,
 				"width": 1,
 				"height": 1,
-				"color": "#ffff00"
+				"color": "blue"
 			}, {
 				"type": "platform",
 				"x": 14,
 				"y": 14,
 				"width": 3,
 				"height": 1,
-				"color": "#ffff00"
+				"color": "blue"
 			}, {
 				"type": "platform",
 				"x": 14,
 				"y": 9,
 				"width": 1,
 				"height": 1,
-				"color": "#ffff00"
+				"color": "blue"
 			}, {
 				"type": "platform",
 				"x": 16,
 				"y": 11,
 				"width": 1,
 				"height": 1,
-				"color": "#ffff00"
+				"color": "blue"
 			}, {
 				"type": "platform",
 				"x": 17,
 				"y": 7,
 				"width": 1,
 				"height": 11,
-				"color": "#ffff00"
+				"color": "blue"
 			}, {
 				"type": "platform",
 				"x": 20,
 				"y": 0,
 				"width": 1,
 				"height": 20,
-				"color": "#ffff00"
+				"color": "blue"
 			}, { 
 				"type": "bolt",
 				"x": 3,
@@ -427,7 +453,9 @@ var LEVELS = [
 		"name": "Level 4: Mad hops",
 		"width": 50,
 		"height": 25,
+		"bgColor": "purple",
 		"bgImage": "images/bgs/testBg.png",
+		"visRadiusColor": "blue",
 		"playerStart": {
 			"x": 3,
 			"y": 15
@@ -439,49 +467,49 @@ var LEVELS = [
 				"y": 0,
 				"width": 1,
 				"height": 20,
-				"color": "#ffff00"
+				"color": "purple"
 			}, {
 				"type": "platform",
 				"x": 0,
 				"y": 20,
 				"width": 15,
 				"height": 1,
-				"color": "#ffff00"
+				"color": "purple"
 			}, {
 				"type": "platform",
 				"x": 20,
 				"y": 20,
 				"width": 15,
 				"height": 1,
-				"color": "#ffff00"
+				"color": "purple"
 			}, {
 				"type": "platform",
 				"x": 36,
 				"y": 18,
 				"width": 3,
 				"height": 1,
-				"color": "#ffff00"
+				"color": "purple"
 			}, {
 				"type": "platform",
 				"x": 30,
 				"y": 15,
 				"width": 3,
 				"height": 1,
-				"color": "#ffff00"
+				"color": "purple"
 			},  {
 				"type": "platform",
 				"x": 24,
 				"y": 12,
 				"width": 3,
 				"height": 1,
-				"color": "#ffff00"
+				"color": "purple"
 			},  {
 				"type": "platform",
 				"x": 15,
 				"y": 9,
 				"width": 6,
 				"height": 1,
-				"color": "#ffff00"
+				"color": "purple"
 			}, { // door eventually
 				"type": "bigPart",
 				"x": 5,
