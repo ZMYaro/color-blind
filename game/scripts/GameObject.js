@@ -23,10 +23,9 @@ var GameObject = (function () {
 	GameObject.prototype = {
 		/**
 		 * Update the object.
-		 * @param {Player} player
 		 * @abstract
 		 */
-		update: function(player) {
+		update: function() {
 		},
 
 		/**
