@@ -94,6 +94,7 @@ var KeyboardManager = (function () {
 		disable: function () {
 			window.removeEventListener('keydown', this._boundHandleKeyDown, false);
 			window.removeEventListener('keyup', this._boundHandleKeyUp, false);
+			this._keys = [];
 		},
 		
 		/**
