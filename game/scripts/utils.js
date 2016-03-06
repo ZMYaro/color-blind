@@ -14,8 +14,10 @@
  * @param {Number} scaleFactor - The ratio of pixel to game grid square
  * @param {CanvasRenderingContext2D} ctx - The rendering context of the game canvas
  */
-function drawSprite(img, x, y, width, height, frameNumber, frameWidth, frameHeight, scaleFactor, ctx) {
-
+function drawSprite(img, x, y, width, height, frameCol, frameRow, frameWidth, frameHeight, scaleFactor, ctx) {
+	var s_width = width/frameCol;
+	var s_height = height/frameWidth;
+	ctx.drawImage(img, s_width, s_height, frameWidth, frameHeight, x, y, width, height); 
 }
 
 /**
