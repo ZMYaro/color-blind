@@ -84,6 +84,9 @@ var Game = (function () {
 					case 'bigPart':
 						that._collectibles.push(new BigPart(objDef.x, objDef.y, levelNum));
 						break;
+					case 'door':
+						that._collectibles.push(new Door(objDef.x, objDef.y, objDef.levelNum));
+						break;
 					default:
 						return; // Continue the for-each loop.
 				}
@@ -91,6 +94,9 @@ var Game = (function () {
 			
 			// Update the scale factor for the new level.
 			this.resize();
+			
+			// Start the level.
+			this.resetLevel();
 		},
 		
 		/**
