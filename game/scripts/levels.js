@@ -79,7 +79,7 @@ var LEVELS = [
 				"width": 2,
 				"height": 2
 			}, {
-				"type": "bolt",
+				"type": "bigPart",
 				"x": 50,
 				"y": 6,
 				"width": 2,
@@ -121,7 +121,7 @@ var LEVELS = [
 				"width": 2,
 				"height": 4
 			}, {
-				"type": "bolt",
+				"type": "bigPart",
 				"x": 40,
 				"y": 6,
 				"width": 2,
@@ -282,7 +282,7 @@ var LEVELS = [
 				"x": 3,
 				"y": 2,
 				"height": 2,
-				"width": 2,
+				"width": 2
 			} , {
 				"type": "bolt",
 				"x": 6,
@@ -290,7 +290,7 @@ var LEVELS = [
 				"width": 2,
 				"height": 4
 			}, { // bigOne eventually
-				"type": "bolt",
+				"type": "bigPart",
 				"x": 19,
 				"y": 17,
 				"width": 2,
@@ -356,7 +356,7 @@ var LEVELS = [
 				"height": 1,
 				"color": "#ffff00"
 			}, { // door eventually
-				"type": "bolt",
+				"type": "bigPart",
 				"x": 5,
 				"y": 5,
 				"width": 2,
@@ -364,5 +364,203 @@ var LEVELS = [
 			}
 		]
 	}, // end of level 4
-
+	{
+		"name": "Level 4: Choices",
+		"width": 60,
+		"height": 60,
+		"bgImage": "images/bgs/testBg.png",
+		"playerStart": {
+			"x": 2,
+			"y": 43
+		}, "objects": [ {
+				"type": "platform",
+				"x": 0,
+				"y": 0,
+				"width": 1,
+				"height": 48,
+				"color": "#ffff00"
+			}, {
+				"type": "platform",
+				"x": 0,
+				"y": 48,
+				"width": 3,
+				"height": 1,
+				"color": "#ffff00"
+			}, {
+				"type": "platform",
+				"x": 3,
+				"y": 45,
+				"width": 1,
+				"height": 3,
+				"color": "#ffff00"
+			}, {
+				"type": "platform",
+				"x": 3,
+				"y": 45,
+				"width": 45,
+				"height": 1,
+				"color": "#ffff00"
+			}, {
+				"type": "platform",
+				"x": 48,
+				"y": 0,
+				"width": 1,
+				"height": 45,
+				"color": "#ffff00"
+			},  {
+				"type": "platform",
+				"x": 3,
+				"y": 36,
+				"width": 1,
+				"height": 5,
+				"color": "#ffff00"
+			},  {
+				"type": "platform",
+				"x": 3,
+				"y": 41,
+				"width": 16,
+				"height": 1,
+				"color": "#ffff00"
+			},  {
+				"type": "platform",
+				"x": 22,
+				"y": 41,
+				"width": 2,
+				"height": 1,
+				"color": "#ffff00"
+			},  {
+				"type": "platform",
+				"x": 23,
+				"y": 36,
+				"width": 1,
+				"height": 6,
+				"color": "#ffff00"
+			},  {
+				"type": "platform",
+				"x": 6,
+				"y": 37,
+				"width": 18,
+				"height": 1,
+				"color": "#ffff00"
+			}, {
+				"type": "platform",
+				"x": 3,
+				"y": 33,
+				"width": 18,
+				"height": 1,
+				"color": "#ffff00"
+			}, {
+				"type": "platform",
+				"x": 24,
+				"y": 32,
+				"width": 18,
+				"height": 1,
+				"color": "#ffff00"
+			}, {
+				"type": "platform",
+				"x": 26,
+				"y": 36,
+				"width": 8,
+				"height": 4,
+				"color": "#ffff00"
+			},  {
+				"type": "platform",
+				"x": 0,
+				"y": 29,
+				"width": 6,
+				"height": 1,
+				"color": "#ffff00"
+			},  {
+				"type": "platform",
+				"x": 10,
+				"y": 29,
+				"width": 14,
+				"height": 1,
+				"color": "#ffff00"
+			}, {
+				"type": "platform",
+				"x": 44,
+				"y": 29,
+				"width": 4,
+				"height": 2,
+				"color": "#ffff00"
+			},  {
+				"type": "platform",
+				"x": 40,
+				"y": 25,
+				"width": 2,
+				"height": 2,
+				"color": "#ffff00"
+			},  {
+				"type": "platform",
+				"x": 36,
+				"y": 21,
+				"width": 2,
+				"height": 2,
+				"color": "#ffff00"
+			},   {
+				"type": "platform",
+				"x": 40,
+				"y": 18,
+				"width": 2,
+				"height": 2,
+				"color": "#ffff00"
+			},   {
+				"type": "platform",
+				"x": 36,
+				"y": 14,
+				"width": 2,
+				"height": 2,
+				"color": "#ffff00"
+			},  {
+				"type": "platform",
+				"x": 0,
+				"y": 14,
+				"width": 32,
+				"height": 2,
+				"color": "#ffff00"
+			},  {
+				"type": "platform",
+				"x": 36,
+				"y": 9,
+				"width": 13,
+				"height": 1,
+				"color": "#ffff00"
+			},  {
+				"type": "platform",
+				"x": 0,
+				"y": 11,
+				"width": 6,
+				"height": 1,
+				"color": "#ffff00"
+			},  {
+				"type": "platform",
+				"x": 6,
+				"y": 8,
+				"width": 13,
+				"height": 1,
+				"color": "#ffff00"
+			},  {
+				"type": "platform",
+				"x": 28,
+				"y": 5,
+				"width": 4,
+				"height": 1,
+				"color": "#ffff00"
+			},  {
+				"type": "platform",
+				"x": 20,
+				"y": 6,
+				"width": 4,
+				"height": 1,
+				"color": "#ffff00"
+			},  { // door eventually
+				"type": "bigPart",
+				"x": 45,
+				"y": 5,
+				"width": 2,
+				"height": 4
+			}
+		]
+	}
 ];
