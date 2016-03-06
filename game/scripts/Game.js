@@ -7,8 +7,8 @@ var Game = (function () {
 	 */
 	function Game(canvas) {
 		// Initialize the canvas.
-		this.canvas = canvas;
-		this.ctx = canvas.getContext("2d");
+		this._canvas = canvas;
+		this._ctx = canvas.getContext("2d");
 		
 		// Initialize the scale factor, which will be overwritten upon first level load.
 		this._scaleFactor = 1;
@@ -78,6 +78,8 @@ var Game = (function () {
 		 */
 		resize: function () {
 			this._scaleFactor = window.innerHeight / this._levelHeight;
+			this._canvas.width = window.innerWidth;
+			this._canvas.height = window.innerHeight;
 		},
 		
 		/**
@@ -93,7 +95,7 @@ var Game = (function () {
 		_draw: function () {
 			// TODO
 			for (var i = 0; i < this._gameObjects.length; i++)
-				this._gameObjects[i].draw(this.ctx,this._scaleFactor);
+				this._gameObjects[i].draw(this._ctx, this._scaleFactor);
 		}
 	};
 	
