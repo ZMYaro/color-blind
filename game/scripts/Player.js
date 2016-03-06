@@ -21,12 +21,12 @@ var Player = (function() {
 	Player.SPRITE_SHEET = 'sprite_sheets/chroma.png';
 	Player.WIDTH = 1;
 	Player.HEIGHT = 2;
-	/** {Number} Acceleration while not moving */
-	Player.ACCELERATION = 0.02;
+	/** {Number} The fraction of the maximum speed to accelerate each frame */
+	Player.ACC_FACTOR = 0.2;
 	/** {Number} Maximum speed while walking */
 	Player.MAX_WALK_SPEED = 0.1;
 	/** {Number} Maximum speed while running */
-	Player.MAX_RUN_SPEED = 0.6;
+	Player.MAX_RUN_SPEED = 0.4;
 	/** {Number} The initial acceleration when jumping */
 	Player.JUMP_SPEED = 0.4;
 	/** {Number} Maximum vertical speed */
@@ -41,21 +41,33 @@ var Player = (function() {
 	 * @param {InputManager} im
 	 */
 	Player.prototype.update = function (im) {
+		var maxSpeed = (this.onGround && im.run) ? Player.MAX_RUN_SPEED : Player.MAX_WALK_SPEED;	
 		if (im.left && !im.right) {
-			this.xSpeed -= Player.ACCELERATION;
-			if (this.xSpeed < -Player.MAX_WALK_SPEED) {
-				this.xSpeed = -Player.MAX_WALK_SPEED;
+			// Move left.
+			if (this.xSpeed > -maxSpeed) {
+				this.xSpeed -= Player.ACC_FACTOR * maxSpeed;
+			} else {
+				if (this.onGround) {
+					// Slow from run to walk on ground if not running.
+					this.xSpeed = -maxSpeed;
+				}
 			}
 		} else if (im.right && !im.left) {
-			this.xSpeed += Player.ACCELERATION;
-			if (this.xSpeed > Player.MAX_WALK_SPEED) {
-				this.xSpeed = Player.MAX_WALK_SPEED;
+			// Move right.
+			if (this.xSpeed < maxSpeed) {
+				this.xSpeed += Player.ACC_FACTOR * maxSpeed;
+			} else {
+				if (this.onGround) {
+					// Slow from run to walk on ground if not running.
+					this.xSpeed = maxSpeed;
+				}
 			}
 		} else {
+			// Slow/stop.
 			if (this.xSpeed > Player.STOP_THRESHOLD) {
-				this.xSpeed -= Player.ACCELERATION;
+				this.xSpeed -= Player.ACC_FACTOR * Player.MAX_WALK_SPEED;
 			} else if (this.xSpeed < -Player.STOP_THRESHOLD) {
-				this.xSpeed += Player.ACCELERATION;
+				this.xSpeed += Player.ACC_FACTOR * Player.MAX_WALK_SPEED;
 			} else {
 				this.xSpeed = 0;
 			}
@@ -68,7 +80,7 @@ var Player = (function() {
 				this.ySpeed = 0;
 			}
 		} else {
-			this.ySpeed += Player.ACCELERATION;
+			this.ySpeed += Player.ACC_FACTOR * Player.MAX_WALK_SPEED;
 		}
 		
 		this.x += this.xSpeed;

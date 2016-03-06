@@ -17,10 +17,8 @@ var KeyboardManager = (function () {
 			87, // W
 			188 // Comma
 		],
-		DOWN_KEYS = [
-			40, // Down
-			79, // O
-			83 // S
+		RUN_KEYS = [
+			16 // Shift
 		];
 	
 	function KeyboardManager() {
@@ -34,7 +32,7 @@ var KeyboardManager = (function () {
 		 * Whether a left key is being pressed.
 		 * @returns {Boolean}
 		 */
-		get leftKey() {
+		get left() {
 			for (var i = 0; i < LEFT_KEYS.length; i++) {
 				if (this._keys[LEFT_KEYS[i]]) {
 					return true;
@@ -47,7 +45,7 @@ var KeyboardManager = (function () {
 		 * Whether a right key is being pressed.
 		 * @returns {Boolean}
 		 */
-		get rightKey() {
+		get right() {
 			for (var i = 0; i < RIGHT_KEYS.length; i++) {
 				if (this._keys[RIGHT_KEYS[i]]) {
 					return true;
@@ -60,7 +58,7 @@ var KeyboardManager = (function () {
 		 * Whether a jump key is being pressed.
 		 * @returns {Boolean}
 		 */
-		get jumpKey() {
+		get jump() {
 			for (var i = 0; i < JUMP_KEYS.length; i++) {
 				if (this._keys[JUMP_KEYS[i]]) {
 					return true;
@@ -73,9 +71,9 @@ var KeyboardManager = (function () {
 		 * Whether a down key is being pressed.
 		 * @returns {Boolean}
 		 */
-		get downKey() {
-			for (var i = 0; i < DOWN_KEYS.length; i++) {
-				if (this._keys[DOWN_KEYS[i]]) {
+		get run() {
+			for (var i = 0; i < RUN_KEYS.length; i++) {
+				if (this._keys[RUN_KEYS[i]]) {
 					return true;
 				}
 			}

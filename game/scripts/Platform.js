@@ -15,6 +15,10 @@ var Platform = (function() {
 		this._color = color;
 	}
 	
+	// Constants
+	/** {Number} The amount by which a player on a platform should overlap the platform */
+	Platform.PLAYER_OVERLAP = 0.01;
+	
 	Platform.prototype = Object.create(GameObject.prototype);
 	
 	/**

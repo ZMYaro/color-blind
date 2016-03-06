@@ -11,7 +11,7 @@ var InputManager = (function () {
 		 * @returns {Boolean}
 		 */
 		get left() {
-			return this._keyboardManager.leftKey;
+			return this._keyboardManager.left;
 		},
 		
 		/**
@@ -19,7 +19,7 @@ var InputManager = (function () {
 		 * @returns {Boolean}
 		 */
 		get right() {
-			return this._keyboardManager.rightKey;
+			return this._keyboardManager.right;
 		},
 		
 		/**
@@ -27,15 +27,15 @@ var InputManager = (function () {
 		 * @returns {Boolean}
 		 */
 		get jump() {
-			return this._keyboardManager.jumpKey;
+			return this._keyboardManager.jump;
 		},
 		
 		/**
 		 * Whether a down input is being pressed.
 		 * @returns {Boolean}
 		 */
-		get down() {
-			return this._keyboardManager.downKey;
+		get run() {
+			return this._keyboardManager.run;
 		},
 		
 		/**

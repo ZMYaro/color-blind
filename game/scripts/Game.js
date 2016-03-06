@@ -125,8 +125,8 @@ var Game = (function () {
 						if (that._player.bottom > platform.y &&
 								that._player.y < platform.y &&
 								that._player.bottom - platform.y < Player.MAX_FALL_SPEED) {
-							// If player is through the platform, put the player on top of the platform.
-							that._player.y -= (that._player.bottom - platform.y);
+							// If player is through the platform, put the player one pixel into the platform.
+							that._player.y -= (that._player.bottom - platform.y) - Platform.PLAYER_OVERLAP;
 							that._player.onGround = true;
 						} else if (that._player.y < platform.bottom &&
 								that._player.bottom > platform.bottom &&
