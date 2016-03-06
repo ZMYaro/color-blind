@@ -104,7 +104,7 @@ var Player = (function() {
 	 */
 	Player.prototype.draw = function (ctx, scaleFactor, screenScroll) {
 		// Draw the player's sprite.
-		drawSprite(imageManager.getImage(Player.SPRITE_SHEET),
+		drawSprite(assetManager.getImage(Player.SPRITE_SHEET),
 			this.x + screenScroll,
 			this.y,
 			this.width,

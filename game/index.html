@@ -8,7 +8,7 @@
 		<script type="text/javascript" src="scripts/levels.js"></script>
 		<script type="text/javascript" src="scripts/utils.js"></script>
 		
-		<script type="text/javascript" src="scripts/imageManager.js"></script>
+		<script type="text/javascript" src="scripts/assetManager.js"></script>
 		
 		<script type="text/javascript" src="scripts/KeyboardManager.js"></script>
 		<script type="text/javascript" src="scripts/GamepadManager.js"></script>
@@ -38,7 +38,7 @@
 				progressBar.max = imageNames.length;
 				
 				imageNames.forEach(function (imageName) {
-					imageManager.loadImage(imageName, function () {
+					assetManager.loadImage(imageName, function () {
 						imagesLoaded++;
 						progressBar.value = imagesLoaded;
 						if (imagesLoaded === imageNames.length) {
