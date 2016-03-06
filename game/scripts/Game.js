@@ -29,6 +29,8 @@ var Game = (function () {
 		this._platforms = [];
 		this._collectibles = [];
 		this._visRadius = 4;
+		this._visRadiusColor = 'white';
+		this._bgColor = 'black';
 		
 		// Initialize the input manager.
 		this._inputManager = new InputManager();
@@ -57,6 +59,8 @@ var Game = (function () {
 		 */
 		loadLevel: function (levelNum) {
 			var levelJSON = LEVELS[levelNum];
+			this._bgColor = levelJSON.bgColor;
+			this._visRadiusColor = levelJSON.visRadiusColor;
 			this._levelWidth = levelJSON.width;
 			this._levelHeight = levelJSON.height;
 			
@@ -219,7 +223,7 @@ var Game = (function () {
 			this._ctx.save();
 			this._ctx.globalCompositeOperation = 'source-atop';
 			// TODO: Add cycling colors.
-			this._ctx.fillStyle = 'darkred';
+			this._ctx.fillStyle = this._visRadiusColor;
 			this._ctx.beginPath();
 			var playerMidX = (this._player.x + this._screenScroll + this._player.width / 2) * this._scaleFactor,
 				playerMidY = (this._player.y + this._player.height / 2) * this._scaleFactor;
@@ -241,7 +245,7 @@ var Game = (function () {
 			this._ctx.save();
 			this._ctx.globalCompositeOperation = 'destination-over';
 			// TODO: Add background images.
-			this._ctx.fillStyle = 'yellow';
+			this._ctx.fillStyle = this._bgColor;
 			this._ctx.fillRect(0, 0, this._levelWidth * this._scaleFactor, this._levelHeight * this._scaleFactor);
 			this._ctx.restore();
 			
