@@ -280,7 +280,7 @@ var LEVELS = [
 	}, {
 		"name": "Level 3: Thread The Needle",
 		"width": 40,
-		"height": 40,
+		"height": 20,
 		"bgColor": "blue",
 		"bgImage": "images/bgs/testBg.png",
 		"visRadiusColor": "red",
