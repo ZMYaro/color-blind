@@ -25,8 +25,8 @@ var Platform = (function() {
 	 */
 	Platform.prototype.draw = function (ctx, scaleFactor) {
 		ctx.save();
-		ctx.fillStyle(color);
-		ctx.fillRect(x * scaleFactor, y * scaleFactor, width * scaleFactor, height * scaleFactor);
+		ctx.fillStyle = (this._color);
+		ctx.fillRect(this._x * scaleFactor, this._y * scaleFactor, this._width * scaleFactor, this._height * scaleFactor);
 		ctx.restore();
 	};
 	

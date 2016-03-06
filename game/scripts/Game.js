@@ -77,7 +77,7 @@ var Game = (function () {
 		 * Recompute scale factor.
 		 */
 		resize: function () {
-			this._scaleFactor = window.innerHeight / this._gameHeight;
+			this._scaleFactor = window.innerHeight / this._levelHeight;
 		},
 		
 		/**
@@ -92,6 +92,8 @@ var Game = (function () {
 		 */
 		_draw: function () {
 			// TODO
+			for (var i = 0; i < this._gameObjects.length; i++)
+				this._gameObjects[i].draw(this.ctx,this._scaleFactor);
 		}
 	};
 	

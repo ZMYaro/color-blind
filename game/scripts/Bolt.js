@@ -24,8 +24,8 @@ var Bolt = (function() {
 	 */
 	Bolt.prototype.draw = function (ctx, scaleFactor) {
 		ctx.save();
-		ctx.fillStyle("black");
-		ctx.fillRect(x * scaleFactor, y * scaleFactor, width * scaleFactor, height * scaleFactor);
+		ctx.fillStyle = ("black");
+		ctx.fillRect(this._x * scaleFactor, this._y * scaleFactor, this._width * scaleFactor, this._height * scaleFactor);
 		ctx.restore();
 	};
 	
