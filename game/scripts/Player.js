@@ -15,10 +15,20 @@ var Player = (function() {
 		this._spriteSheet = Player.SPRITE_SHEET;
 		this._spriteWidth = 0;
 		this._spriteHeight = 0;
+		this._currentAnimation = Player.ANIMATIONS.walk;
+		this._currentFrame = 0;
 	}
 	
 	// Constants
 	Player.SPRITE_SHEET = 'sprite_sheets/chroma.png';
+	Player.SPRITE_WIDTH = 19;
+	Player.SPRITE_HEIGHT = 22;
+	Player.ANIMATIONS = {
+		walk: {
+			row: 0,
+			length: 9
+		}
+	};
 	Player.WIDTH = 1;
 	Player.HEIGHT = 2;
 	/** {Number} The fraction of the maximum speed to accelerate each frame */
@@ -93,10 +103,25 @@ var Player = (function() {
 	 * @param {Number} scaleFactor - The ratio of pixel to game grid square
 	 */
 	Player.prototype.draw = function (ctx, scaleFactor) {
-		ctx.save();
-		ctx.fillStyle = "grey";
-		ctx.fillRect(this.x * scaleFactor, this.y * scaleFactor, this.width * scaleFactor, this.height * scaleFactor);
-		ctx.restore();
+		// Draw the player's sprite.
+		drawSprite(imageManager.getImage(Player.SPRITE_SHEET),
+			this.x,
+			this.y,
+			this.width,
+			this.height,
+			this._currentFrame,
+			this._currentAnimation.row,
+			Player.SPRITE_WIDTH,
+			Player.SPRITE_HEIGHT,
+			this.xSpeed < 0,
+			ctx,
+			scaleFactor);
+		
+		// Update the animation.
+		this._currentFrame++;
+		if (this._currentFrame >= this._currentAnimation.length) {
+			this._currentFrame = 0;
+		}
 	};
 
 	return Player;

@@ -11,13 +11,27 @@
  * @param {Number} frameRow - The frame's row on the sprite sheet
  * @param {Number} frameWidth - The pixel width of each frame on the sprite sheet
  * @param {Number} frameHeight - The pixel width of each frame on the sprite sheet
- * @param {Number} scaleFactor - The ratio of pixel to game grid square
+ * @param {Boolean} flipHoriz - Whether to flip the sprite horizontally
  * @param {CanvasRenderingContext2D} ctx - The rendering context of the game canvas
+ * @param {Number} scaleFactor - The ratio of pixel to game grid square
  */
-function drawSprite(img, x, y, width, height, frameCol, frameRow, frameWidth, frameHeight, scaleFactor, ctx) {
-	var s_width = width/frameCol;
-	var s_height = height/frameWidth;
-	ctx.drawImage(img, s_width, s_height, frameWidth, frameHeight, x, y, width, height); 
+function drawSprite(img, x, y, width, height, frameCol, frameRow, frameWidth, frameHeight, flipHoriz, ctx, scaleFactor) {
+	var spriteGameWidth = frameWidth / frameHeight * height,
+		spriteGameX = x - (spriteGameWidth / 2 - width / 2),
+		drawX = spriteGameX * scaleFactor,
+		drawY = y * scaleFactor,
+		drawWidth = spriteGameWidth * scaleFactor,
+		drawHeight = height * scaleFactor,
+		sliceX = frameCol * frameWidth,
+		sliceY = frameRow * frameHeight;
+	
+	ctx.save();
+	ctx.translate(drawX + drawWidth / 2, drawY)
+	if (flipHoriz) {
+		ctx.scale(-1, 1);
+	}
+	ctx.drawImage(img, sliceX, sliceY, frameWidth, frameHeight, -drawWidth / 2, 0, drawWidth, drawHeight); 
+	ctx.restore();
 }
 
 /**
