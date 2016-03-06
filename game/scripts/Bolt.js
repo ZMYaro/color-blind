@@ -20,7 +20,7 @@ var Bolt = (function() {
 	Bolt.prototype = Object.create(Collectible.prototype);
 	
 	/**
-	 * Draw the platform to the game canvas.
+	 * Draw the bolt to the game canvas.
 	 * @param {CanvasRenderingContext2D} ctx - The rendering context of the game canvas
 	 * @param {Number} scaleFactor - The ratio of pixel to game grid square
 	 * @override
