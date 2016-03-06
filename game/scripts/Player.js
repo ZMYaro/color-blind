@@ -9,8 +9,8 @@ var Player = (function() {
 		
 		this.onGround = true;
 		
-		this._xSpeed = 0;
-		this._ySpeed = 0;
+		this.xSpeed = 0;
+		this.ySpeed = 0;
 		
 		this._spriteSheet = null;
 		this._spriteWidth = 0;
@@ -26,6 +26,8 @@ var Player = (function() {
 	Player.MAX_WALK_SPEED = 0.1;
 	/** {Number} Maximum speed while running */
 	Player.MAX_RUN_SPEED = 0.6;
+	/** {Number} The initial acceleration when jumping */
+	Player.JUMP_SPEED = 0.4;
 	/** {Number} Maximum vertical speed */
 	Player.MAX_FALL_SPEED = 0.6;
 	/** {Number} The speed at which to consider the player stopped */
@@ -39,33 +41,37 @@ var Player = (function() {
 	 */
 	Player.prototype.update = function (im) {
 		if (im.left && !im.right) {
-			this._xSpeed -= Player.ACCELERATION;
-			if (this._xSpeed < -Player.MAX_WALK_SPEED) {
-				this._xSpeed = -Player.MAX_WALK_SPEED;
+			this.xSpeed -= Player.ACCELERATION;
+			if (this.xSpeed < -Player.MAX_WALK_SPEED) {
+				this.xSpeed = -Player.MAX_WALK_SPEED;
 			}
 		} else if (im.right && !im.left) {
-			this._xSpeed += Player.ACCELERATION;
-			if (this._xSpeed > Player.MAX_WALK_SPEED) {
-				this._xSpeed = Player.MAX_WALK_SPEED;
+			this.xSpeed += Player.ACCELERATION;
+			if (this.xSpeed > Player.MAX_WALK_SPEED) {
+				this.xSpeed = Player.MAX_WALK_SPEED;
 			}
 		} else {
-			if (this._xSpeed > Player.STOP_THRESHOLD) {
-				this._xSpeed -= Player.ACCELERATION;
-			} else if (this._xSpeed < -Player.STOP_THRESHOLD) {
-				this._xSpeed += Player.ACCELERATION;
+			if (this.xSpeed > Player.STOP_THRESHOLD) {
+				this.xSpeed -= Player.ACCELERATION;
+			} else if (this.xSpeed < -Player.STOP_THRESHOLD) {
+				this.xSpeed += Player.ACCELERATION;
 			} else {
-				this._xSpeed = 0;
+				this.xSpeed = 0;
 			}
 		}
 		
 		if (this.onGround) {
-			this._ySpeed = 0;
+			if (im.jump) {
+				this.ySpeed = -Player.JUMP_SPEED;
+			} else {
+				this.ySpeed = 0;
+			}
 		} else {
-			this._ySpeed += Player.ACCELERATION;
+			this.ySpeed += Player.ACCELERATION;
 		}
 		
-		this.x += this._xSpeed;
-		this.y += this._ySpeed;
+		this.x += this.xSpeed;
+		this.y += this.ySpeed;
 	};
 	
 	/**

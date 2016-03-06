@@ -26,8 +26,8 @@ var InputManager = (function () {
 		 * Whether an up input is being pressed.
 		 * @returns {Boolean}
 		 */
-		get up() {
-			return this._keyboardManager.upKey;
+		get jump() {
+			return this._keyboardManager.jumpKey;
 		},
 		
 		/**

@@ -10,7 +10,9 @@ var KeyboardManager = (function () {
 			68, // D
 			69 // E
 		],
-		UP_KEYS = [
+		JUMP_KEYS = [
+			13, // Enter
+			32, // Space
 			38, // Up
 			87, // W
 			188 // Comma
@@ -55,12 +57,12 @@ var KeyboardManager = (function () {
 		},
 		
 		/**
-		 * Whether an up key is being pressed.
+		 * Whether a jump key is being pressed.
 		 * @returns {Boolean}
 		 */
-		get upKey() {
-			for (var i = 0; i < UP_KEYS.length; i++) {
-				if (this._keys[UP_KEYS[i]]) {
+		get jumpKey() {
+			for (var i = 0; i < JUMP_KEYS.length; i++) {
+				if (this._keys[JUMP_KEYS[i]]) {
 					return true;
 				}
 			}

@@ -118,6 +118,7 @@ var Game = (function () {
 							platform.bottom - that._player.y < Player.MAX_FALL_SPEED) {
 						// If the player hits the platform from below, stop the player.
 						that._player.y += (platform.bottom - that._player.y);
+						that._player.ySpeed = 0;
 					} else if (that._player.right < platform.x + 0.5) {
 						// Check collisions from the left.
 						that._player.x -= (that._player.right - platform.x);
