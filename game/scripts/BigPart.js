@@ -65,10 +65,12 @@ var BigPart = (function () {
 	 */
 	BigPart.prototype.collect = function (game) {
 		if (this._levelNum === 1) {
-			// TODO: Play the cutscene.
+			// Play the cutscene after the first level.
+			cutscene.play(game);
+		} else {
+			// Load the next level.
+			game.loadLevel(this._levelNum + 1);
 		}
-		// Load the next level.
-		game.loadLevel(this._levelNum + 1);
 	};
 	
 	return BigPart;

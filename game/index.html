@@ -6,6 +6,8 @@
 		<link href="https://fonts.googleapis.com/css?family=Press+Start+2P" rel="stylesheet" type="text/css" />
 		<link rel="stylesheet" type="text/css" href="styles/styles.css" />
 		
+		<script type="text/javascript" src="scripts/cutscene.js"></script>
+		
 		<script type="text/javascript" src="scripts/levels.js"></script>
 		<script type="text/javascript" src="scripts/utils.js"></script>
 		
@@ -39,9 +41,14 @@
 						BigPart.SPRITE_SHEETS[1],
 						BigPart.SPRITE_SHEETS[2],
 						BigPart.SPRITE_SHEETS[3],
-						BigPart.SPRITE_SHEETS[4]
+						BigPart.SPRITE_SHEETS[4],
+						'cutscene.gif'
 					];
 
+				
+				LEVELS.forEach(function () {
+					
+				});
 				
 				progressBar.max = imageNames.length;
 				
@@ -68,6 +75,7 @@
 	</head>
 	<body>
 		<canvas id="gameCanvas"></canvas>
-		<progress id="loadProgress" />
+		<progress id="loadProgress"></progress>
+		<canvas id="cutsceneCanvas"></canvas>
 	</body>
 </html>

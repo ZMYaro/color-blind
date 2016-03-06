@@ -4,8 +4,8 @@
 	position: absolute;
 	left: 0;
 	top: 0;
-	right: 0;
-	bottom: 0;
+	width: 100%;
+	height: 100%;
 }
 
 #loadProgress {
@@ -13,4 +13,14 @@
 	left: 25%;
 	width: 50%;
 	top: 49%;
+}
+
+#cutsceneCanvas {
+	display: none;
+	position: absolute;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 100%;
+	z-index: 1;
 }
