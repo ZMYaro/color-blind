@@ -74,6 +74,16 @@ var Game = (function () {
 		},
 		
 		/**
+		 * Reset the player to the starting position.
+		 */
+		resetLevel: function () {
+			this._player.x = this._playerStartX;
+			this._player.y = this._playerStartY;
+			this._player.xSpeed = 0;
+			this._player.ySpeed = 0;
+		},
+		
+		/**
 		 * Suspend gameplay and remove event listeners.
 		 */
 		pause: function () {
@@ -102,33 +112,38 @@ var Game = (function () {
 		_update: function () {
 			var that = this;
 			
-			this._player.update(this._inputManager);
-			
-			// Check platform collisions.
-			that._player.onGround = false;
-			this._platforms.forEach(function (platform) {
-				if (colliding(platform, that._player)) {
-					if (that._player.bottom > platform.y &&
-							that._player.y < platform.y &&
-							that._player.bottom - platform.y < Player.MAX_FALL_SPEED) {
-						// If player is through the platform, put the player on top of the platform.
-						that._player.y -= (that._player.bottom - platform.y);
-						that._player.onGround = true;
-					} else if (that._player.y < platform.bottom &&
-							that._player.bottom > platform.bottom &&
-							platform.bottom - that._player.y < Player.MAX_FALL_SPEED) {
-						// If the player hits the platform from below, stop the player.
-						that._player.y += (platform.bottom - that._player.y);
-						that._player.ySpeed = 0;
-					} else if (that._player.right < platform.x + 0.5) {
-						// Check collisions from the left.
-						that._player.x -= (that._player.right - platform.x);
-					} else if (that._player.x > platform.right - 0.5) {
-						// Check collisions from the right.
-						that._player.x += (platform.right - that._player.x);
+			if (this._player.y > this._levelHeight + 2) {
+				// Die when off the bottom of the screen.
+				this.resetLevel();
+			} else {
+				this._player.update(this._inputManager);
+				
+				// Check platform collisions.
+				this._player.onGround = false;
+				this._platforms.forEach(function (platform) {
+					if (colliding(platform, that._player)) {
+						if (that._player.bottom > platform.y &&
+								that._player.y < platform.y &&
+								that._player.bottom - platform.y < Player.MAX_FALL_SPEED) {
+							// If player is through the platform, put the player on top of the platform.
+							that._player.y -= (that._player.bottom - platform.y);
+							that._player.onGround = true;
+						} else if (that._player.y < platform.bottom &&
+								that._player.bottom > platform.bottom &&
+								platform.bottom - that._player.y < Player.MAX_FALL_SPEED) {
+							// If the player hits the platform from below, stop the player.
+							that._player.y += (platform.bottom - that._player.y);
+							that._player.ySpeed = 0;
+						} else if (that._player.right < platform.x + 0.5) {
+							// Check collisions from the left.
+							that._player.x -= (that._player.right - platform.x);
+						} else if (that._player.x > platform.right - 0.5) {
+							// Check collisions from the right.
+							that._player.x += (platform.right - that._player.x);
+						}
 					}
-				}
-			});
+				});
+			}
 		},
 		
 		/**
