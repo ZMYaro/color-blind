@@ -1,25 +1,25 @@
-"use strict"
+var Player = (function() {
+	'use strict'
 
-function makePlayer() {
-	var Player;
-	return Player = {
-		x : 0,
-		y : 0,
-		width : 0, 
-		height : 0,
-		_spriteSheet : null,
-		_spriteWidth : 0,
-		_spriteHeight : 0,
+	function Player(x, y, width, height) {
+		GameObject.apply(this, arguments);
 
-
-		/**
-		* draws the object to the screen
-		* @param {DrawingContext} ctx - the drawing context on which the collectible will be drawn
-		* @param {int} scale - represents the screen size, allows proper resizing
-		*/
-		draw: function(ctx, scale) {
-
-		}, // end draw function
-
+		this._spriteSheet = null;
+		this._spriteWidth = 0;
+		this._spriteHeight = 0;
 	}
-}
+
+	/**
+	* Draw the Player to the game canvas.
+	* @param {CanvasRenderingContext2D} ctx - the drawing context on which the collectible will be drawn
+	* @param {Number} scale - The ratio of pixel to game grid square
+	*/
+	Player.prototype.draw = function(ctx, scale) {
+		ctx.save();
+		ctx.fillStyle = "grey";
+		ctx.fillRect = (0, 0, 100, 100);
+		ctx.restore();
+	};
+
+	return Player;
+})();
