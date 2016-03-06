@@ -19,14 +19,14 @@ var Platform = (function() {
 	
 	/**
 	 * Draw the platform to the game canvas.
-	 * @param {CanvasRenderingContext2D} ctx - the drawing context on which the collectible will be drawn
+	 * @param {CanvasRenderingContext2D} ctx - The rendering context of the game canvas
 	 * @param {Number} scaleFactor - The ratio of pixel to game grid square
 	 * @override
 	 */
 	Platform.prototype.draw = function (ctx, scaleFactor) {
 		ctx.save();
 		ctx.fillStyle = (this._color);
-		ctx.fillRect(this._x * scaleFactor, this._y * scaleFactor, this._width * scaleFactor, this._height * scaleFactor);
+		ctx.fillRect(this.x * scaleFactor, this.y * scaleFactor, this.width * scaleFactor, this.height * scaleFactor);
 		ctx.restore();
 	};
 	

@@ -2,8 +2,8 @@
 var LEVELS = [
 	{
 		"name": "Level 1: The Startening",
-		"width": 1000,
-		"height": 1000,
+		"width": 200,
+		"height": 16,
 		"bgImage": "images/bgs/testBg.png",
 		"playerStart": {
 			"x": 0,
@@ -12,9 +12,9 @@ var LEVELS = [
 		"objects": [{
 			"type": "platform",
 			"x": 0,
-			"y": 100,
-			"width": 100,
-			"height": 100,
+			"y": 12,
+			"width": 200,
+			"height": 4,
 			"color": "#ffff00"
 		}, {
 			"type": "bolt",

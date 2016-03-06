@@ -10,10 +10,10 @@ var GameObject = (function () {
 	 * @abstract
 	 */
 	function GameObject(x, y, width, height) {
-		this._x = x;
-		this._y = y;
-		this._width = width;
-		this._height = height;
+		this.x = x;
+		this.y = y;
+		this.width = width;
+		this.height = height;
 		
 		this._spriteSheet = undefined;
 		this._spriteWidth = 0;
