@@ -34,7 +34,11 @@ var BigPart = (function () {
 	 * @param {Game} game - The game instance in which the collectible was collected
 	 */
 	BigPart.prototype.collect = function (game) {
-		// TODO: Go to the next level.
+		if (this._levelNum === 1) {
+			// TODO: Play the cutscene.
+		}
+		// Load the next level.
+		game.loadLevel(this._levelNum + 1);
 	};
 	
 	return BigPart;
