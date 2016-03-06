@@ -28,7 +28,7 @@
 			var MENU_LEVEL = 0;
 			
 			window.onload = preloadImages;
-			
+
 			function preloadImages() {
 				var progressBar = document.getElementById('loadProgress'),
 					imagesLoaded = 0,
@@ -41,6 +41,7 @@
 						BigPart.SPRITE_SHEETS[3],
 						BigPart.SPRITE_SHEETS[4]
 					];
+
 				
 				progressBar.max = imageNames.length;
 				
@@ -59,7 +60,7 @@
 			function startGame() {
 				var canvas = document.getElementById('gameCanvas'),
 					game = new Game(canvas);
-				
+				assetManager.loadAudio('/MightyLikeUs.mp3');
 				game.loadLevel(MENU_LEVEL);
 				game.resume();
 			}

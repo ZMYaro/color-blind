@@ -29,8 +29,6 @@ var Game = (function () {
 		this._platforms = [];
 		this._collectibles = [];
 		this._visRadius = 4;
-		this._visRadiusColor = 'white';
-		this._bgColor = 'black';
 		
 		// Initialize the input manager.
 		this._inputManager = new InputManager();
@@ -59,8 +57,6 @@ var Game = (function () {
 		 */
 		loadLevel: function (levelNum) {
 			var levelJSON = LEVELS[levelNum];
-			this._bgColor = levelJSON.bgColor;
-			this._visRadiusColor = levelJSON.visRadiusColor;
 			this._levelWidth = levelJSON.width;
 			this._levelHeight = levelJSON.height;
 			
@@ -69,6 +65,8 @@ var Game = (function () {
 			this._player.x = levelJSON.playerStart.x;
 			this._player.y = levelJSON.playerStart.y;
 			
+			assetManager.getAudio('/MightyLikeUs.mp3').play();
+
 			this._platforms = [];
 			this._collectibles = [];
 			
@@ -84,9 +82,6 @@ var Game = (function () {
 					case 'bigPart':
 						that._collectibles.push(new BigPart(objDef.x, objDef.y, levelNum));
 						break;
-					case 'door':
-						that._collectibles.push(new Door(objDef.x, objDef.y, objDef.levelNum));
-						break;
 					default:
 						return; // Continue the for-each loop.
 				}
@@ -94,9 +89,6 @@ var Game = (function () {
 			
 			// Update the scale factor for the new level.
 			this.resize();
-			
-			// Start the level.
-			this.resetLevel();
 		},
 		
 		/**
@@ -154,13 +146,6 @@ var Game = (function () {
 				return;
 			} else {
 				this._player.update(this._inputManager);
-				
-				// Keep the player in the level.
-				if (this._player.x < 0) {
-					this._player.x = 0;
-				} else if (this._player.right > this._levelWidth) {
-					this._player.x = this._levelWidth - this._player.width;
-				}
 				
 				// Check platform collisions.
 				this._player.onGround = false;
@@ -229,7 +214,7 @@ var Game = (function () {
 			this._ctx.save();
 			this._ctx.globalCompositeOperation = 'source-atop';
 			// TODO: Add cycling colors.
-			this._ctx.fillStyle = this._visRadiusColor;
+			this._ctx.fillStyle = 'darkred';
 			this._ctx.beginPath();
 			var playerMidX = (this._player.x + this._screenScroll + this._player.width / 2) * this._scaleFactor,
 				playerMidY = (this._player.y + this._player.height / 2) * this._scaleFactor;
@@ -251,7 +236,7 @@ var Game = (function () {
 			this._ctx.save();
 			this._ctx.globalCompositeOperation = 'destination-over';
 			// TODO: Add background images.
-			this._ctx.fillStyle = this._bgColor;
+			this._ctx.fillStyle = 'yellow';
 			this._ctx.fillRect(0, 0, this._levelWidth * this._scaleFactor, this._levelHeight * this._scaleFactor);
 			this._ctx.restore();
 			
