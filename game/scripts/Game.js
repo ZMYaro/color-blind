@@ -23,7 +23,6 @@ var Game = (function () {
 		
 		this._boundResize = this.resize.bind(this);
 		window.addEventListener('resize', this._boundResize, false);
-		
 		return this;
 	}
 
@@ -45,7 +44,11 @@ var Game = (function () {
 				var newObj;
 				switch (objDef.type) {
 					case 'platform':
-						// TODO
+						newObj = makePlatform();
+						newObj.x = objDef.x;
+						newObj.y = objDef.y;
+						newObj.width = objDef.width;
+						newObj.height = objDef.height;
 						break;
 					case 'bolt':
 						// TODO
