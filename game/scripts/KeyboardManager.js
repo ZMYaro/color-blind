@@ -29,7 +29,7 @@ var KeyboardManager = (function () {
 	
 	KeyboardManager.prototype = {
 		/**
-		 * Whether a left key is being pressed.
+		 * Whether a left key is being pressed
 		 * @returns {Boolean}
 		 */
 		get left() {
@@ -42,7 +42,7 @@ var KeyboardManager = (function () {
 		},
 		
 		/**
-		 * Whether a right key is being pressed.
+		 * Whether a right key is being pressed
 		 * @returns {Boolean}
 		 */
 		get right() {
@@ -55,7 +55,7 @@ var KeyboardManager = (function () {
 		},
 		
 		/**
-		 * Whether a jump key is being pressed.
+		 * Whether a jump key is being pressed
 		 * @returns {Boolean}
 		 */
 		get jump() {
@@ -68,7 +68,7 @@ var KeyboardManager = (function () {
 		},
 		
 		/**
-		 * Whether a down key is being pressed.
+		 * Whether a run key is being pressed
 		 * @returns {Boolean}
 		 */
 		get run() {
