@@ -26,12 +26,19 @@ var imageManager = (function () {
 			
 			// Set the call back, if any.
 			if (typeof callback === 'function') {
-				newImage.onload = callback;
+				newImage.addEventListener('load', callback, false);
+				newImage.addEventListener('error', callback, false);
 			}
 			
 			newImage.src = IMAGES_DIR + fileName;
 			
 			this._images[fileName] = newImage;
+			
+			var that = this;
+			newImage.addEventListener('error', function () {
+				// Delete improperly-loaded images.
+				delete that._images[fileName];
+			}, false);
 		},
 		
 		/**
