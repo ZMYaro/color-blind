@@ -14,7 +14,8 @@ var LEVELS = [
 			"x": 0,
 			"y": 2,
 			"width": 4,
-			"height": 1
+			"height": 1,
+			"color": "#ffff00"
 		}, {
 			"type": "bolt",
 			"x": 2,

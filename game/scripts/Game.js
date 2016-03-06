@@ -44,15 +44,13 @@ var Game = (function () {
 				var newObj;
 				switch (objDef.type) {
 					case 'platform':
-						newObj = makePlatform();
-						newObj.x = objDef.x;
-						newObj.y = objDef.y;
-						newObj.width = objDef.width;
-						newObj.height = objDef.height;
+						newObj = new Platform(objDef.x, objDef.y, objDef.width, objDef.height, objDef.color);
 						break;
 					case 'bolt':
 						// TODO
 						break;
+					default:
+						return; // Continue the for-each loop.
 				}
 				that._gameObjects.push(newObj);
 			});
