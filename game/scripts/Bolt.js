@@ -26,6 +26,9 @@ var Bolt = (function() {
 	 * @override
 	 */
 	Bolt.prototype.draw = function (ctx, scaleFactor, screenScroll) {
+		if (this.collected) {
+			return;
+		}
 		ctx.save();
 		ctx.fillStyle = ("black");
 		ctx.fillRect((this.x + screenScroll) * scaleFactor, this.y * scaleFactor, Bolt.SIZE * scaleFactor, Bolt.SIZE * scaleFactor);
