@@ -145,6 +145,13 @@ var Game = (function () {
 			} else {
 				this._player.update(this._inputManager);
 				
+				// Keep the player in the level.
+				if (this._player.x < 0) {
+					this._player.x = 0;
+				} else if (this._player.right > this._levelWidth) {
+					this._player.x = this._levelWidth - this._player.width;
+				}
+				
 				// Check platform collisions.
 				this._player.onGround = false;
 				this._platforms.forEach(function (platform) {
