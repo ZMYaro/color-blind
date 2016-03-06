@@ -93,6 +93,7 @@ var Game = (function () {
 			this._player.y = this._playerStartY;
 			this._player.xSpeed = 0;
 			this._player.ySpeed = 0;
+			this._screenScroll = 0;
 		},
 		
 		/**
