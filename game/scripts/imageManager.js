@@ -24,14 +24,16 @@ var imageManager = (function () {
 			// Create the new Image.
 			var newImage = new Image();
 			
-			// Set the call back, if any.
+			// Set the callback, if any.
 			if (typeof callback === 'function') {
 				newImage.addEventListener('load', callback, false);
 				newImage.addEventListener('error', callback, false);
 			}
 			
+			// Actually load the image.
 			newImage.src = IMAGES_DIR + fileName;
 			
+			// Store the Image object in the map.
 			this._images[fileName] = newImage;
 			
 			var that = this;
