@@ -255,15 +255,15 @@ var Game = (function () {
 			this._ctx.save();
 			this._ctx.globalCompositeOperation = 'destination-over';
 			// TODO: Add background images.
-			this._ctx.fillStyle = this._bgColor;
-			this._ctx.fillRect(0, 0, this._canvas.width, this._canvas.height);
 			if (this._bgImage) {
 				this._ctx.drawImage(assetManager.getImage(this._bgImage),
-					0,
+					this._screenScroll * this._scaleFactor,
 					0,
 					this._levelWidth * this._scaleFactor,
 					this._levelHeight * this._scaleFactor);
 			}
+			this._ctx.fillStyle = this._bgColor;
+			this._ctx.fillRect(0, 0, this._canvas.width, this._canvas.height);
 			this._ctx.restore();
 			
 			raf(this._boundDraw);
