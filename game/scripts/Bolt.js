@@ -25,10 +25,10 @@ var Bolt = (function() {
 	 * @param {Number} scaleFactor - The ratio of pixel to game grid square
 	 * @override
 	 */
-	Bolt.prototype.draw = function (ctx, scaleFactor) {
+	Bolt.prototype.draw = function (ctx, scaleFactor, screenScroll) {
 		ctx.save();
 		ctx.fillStyle = ("black");
-		ctx.fillRect(this.x * scaleFactor, this.y * scaleFactor, Bolt.SIZE * scaleFactor, Bolt.SIZE * scaleFactor);
+		ctx.fillRect((this.x + screenScroll) * scaleFactor, this.y * scaleFactor, Bolt.SIZE * scaleFactor, Bolt.SIZE * scaleFactor);
 		ctx.restore();
 	};
 	

@@ -24,9 +24,9 @@ var BigPart = (function () {
 	 * @param {Number} scaleFactor - The ratio of pixel to game grid square
 	 * @override
 	 */
-	BigPart.prototype.draw = function (ctx, scaleFactor) {
+	BigPart.prototype.draw = function (ctx, scaleFactor, screenScroll) {
 		ctx.fillStyle = '#ff60e0';
-		ctx.fillRect(this.x * scaleFactor, this.y * scaleFactor, BigPart.WIDTH * scaleFactor, BigPart.HEIGHT * scaleFactor);
+		ctx.fillRect((this.x + screenScroll) * scaleFactor, this.y * scaleFactor, BigPart.WIDTH * scaleFactor, BigPart.HEIGHT * scaleFactor);
 	};
 	
 	/**

@@ -102,10 +102,10 @@ var Player = (function() {
 	 * @param {CanvasRenderingContext2D} ctx - The rendering context of the game canvas
 	 * @param {Number} scaleFactor - The ratio of pixel to game grid square
 	 */
-	Player.prototype.draw = function (ctx, scaleFactor) {
+	Player.prototype.draw = function (ctx, scaleFactor, screenScroll) {
 		// Draw the player's sprite.
 		drawSprite(imageManager.getImage(Player.SPRITE_SHEET),
-			this.x,
+			this.x + screenScroll,
 			this.y,
 			this.width,
 			this.height,

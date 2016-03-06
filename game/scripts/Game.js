@@ -15,11 +15,12 @@ var Game = (function () {
 		// Initialize the scale factor, which will be overwritten upon first level load.
 		this._scaleFactor = 1;
 		
-		// Initialize game-related objects.
+		// Initialize game-related variables.
 		this._playerStartX = 0;
 		this._playerStartY = 0;
 		this._levelWidth = 1;
 		this._levelHeight = 1;
+		this._screenScroll = 0;
 		this._player = new Player();
 		this._platforms = [];
 		this._collectibles = [];
@@ -38,6 +39,9 @@ var Game = (function () {
 		return this;
 	}
 
+	// Constants
+	Game.SCREEN_SCROLL_THRESHOLD = 8;
+	
 	Game.prototype = {
 		/**
 		 * Load a given level based on a given level JSON.
@@ -154,12 +158,25 @@ var Game = (function () {
 			
 			this._update();
 			
+			// Scroll the screen with the player.
+			if (this._player.x + this._screenScroll < Game.SCREEN_SCROLL_THRESHOLD &&
+					this._player.right + this._screenScroll <= window.innerWidth / this._scaleFactor - Game.SCREEN_SCROLL_THRESHOLD &&
+					this._player.x > Game.SCREEN_SCROLL_THRESHOLD) {
+				console.log('aoeu');
+				this._screenScroll += Game.SCREEN_SCROLL_THRESHOLD - (this._player.x + this._screenScroll);
+			} else if (this._player.right + this._screenScroll > window.innerWidth / this._scaleFactor - Game.SCREEN_SCROLL_THRESHOLD &&
+					this._player.x + this._screenScroll >= Game.SCREEN_SCROLL_THRESHOLD &&
+					this._player.right < this._levelWidth - Game.SCREEN_SCROLL_THRESHOLD) {
+				console.log('htns');
+				this._screenScroll += window.innerWidth / this._scaleFactor - Game.SCREEN_SCROLL_THRESHOLD - (this._player.right + this._screenScroll);
+			}
+			
 			// Clear the screen.
 			this._ctx.clearRect(0, 0, this._canvas.width, this._canvas.height);
 			
 			// Draw platforms.
 			this._platforms.forEach(function (platform) {
-				platform.draw(that._ctx, that._scaleFactor);
+				platform.draw(that._ctx, that._scaleFactor, that._screenScroll);
 			});
 			
 			// Change the color of platforms in a radius around the player.
@@ -168,7 +185,7 @@ var Game = (function () {
 			// TODO: Add cycling colors.
 			this._ctx.fillStyle = 'darkred';
 			this._ctx.beginPath();
-			var playerMidX = (this._player.x + this._player.width / 2) * this._scaleFactor,
+			var playerMidX = (this._player.x + this._screenScroll + this._player.width / 2) * this._scaleFactor,
 				playerMidY = (this._player.y + this._player.height / 2) * this._scaleFactor;
 			this._ctx.arc(playerMidX, playerMidY, this._visRadius * this._scaleFactor, 0, 2 * Math.PI);
 			this._ctx.closePath();
@@ -177,11 +194,11 @@ var Game = (function () {
 			
 			// Draw collectibles.
 			this._collectibles.forEach(function (collectible) {
-				collectible.draw(that._ctx, that._scaleFactor);
+				collectible.draw(that._ctx, that._scaleFactor, that._screenScroll);
 			});
 			
 			// Draw the player.
-			this._player.draw(this._ctx, this._scaleFactor);
+			this._player.draw(this._ctx, this._scaleFactor, this._screenScroll);
 			
 			// Draw the background.
 			// This gets drawn last, but the drawing mode ensures it only fills transparent pixels.

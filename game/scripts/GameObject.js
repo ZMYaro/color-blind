@@ -42,7 +42,7 @@ var GameObject = (function () {
 		 * @param {Number} scaleFactor - The ratio of pixel to game grid square
 		 * @abstract
 		 */
-		draw: function(ctx, scaleFactor) {
+		draw: function(ctx, scaleFactor, screenScroll) {
 		}
 	}
 	
