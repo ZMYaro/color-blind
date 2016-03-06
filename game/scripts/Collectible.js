@@ -17,8 +17,9 @@ var Collectible = (function () {
 	
 	/**
 	 * Handle the collectible being collected.
+	 * @param {Game} game - The game instance in which the collectible was collected
 	 */
-	Collectible.prototype.onCollect = function () {
+	Collectible.prototype.collect = function () {
 	}
 	
 	return Collectible;
