@@ -47,7 +47,8 @@ var Game = (function () {
 		 * Load a given level based on a given level JSON.
 		 * @param {Object} levelJSON
 		 */
-		loadLevel: function (levelJSON) {
+		loadLevel: function (levelNum) {
+			var levelJSON = LEVELS[levelNum];
 			this._levelWidth = levelJSON.width;
 			this._levelHeight = levelJSON.height;
 			
@@ -67,6 +68,9 @@ var Game = (function () {
 						break;
 					case 'bolt':
 						that._collectibles.push(new Bolt(objDef.x, objDef.y, objDef.width, objDef.height));
+						break;
+					case 'bigPart':
+						that._collectibles.push(new BigPart(objDef.x, objDef.y, levelNum));
 						break;
 					default:
 						return; // Continue the for-each loop.
