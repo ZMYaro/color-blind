@@ -11,6 +11,10 @@ var Game = (function () {
 		// Initialize the canvas.
 		this._canvas = canvas;
 		this._ctx = canvas.getContext("2d");
+		this._ctx.webkitImageSmoothingEnabled = false;
+		this._ctx.mozImageSmoothingEnabled = false;
+		this._ctx.msImageSmoothingEnabled = false;
+		this._ctx.imageSmoothingEnabled = false;
 		
 		// Initialize the scale factor, which will be overwritten upon first level load.
 		this._scaleFactor = 1;
