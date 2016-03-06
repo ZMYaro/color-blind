@@ -1,1 +1,0 @@
-This directory contains all the game files, with `scripts`, `styles`, and `images` in their respective subfolders.
