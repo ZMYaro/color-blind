@@ -21,12 +21,28 @@ var Player = (function() {
 	
 	// Constants
 	Player.SPRITE_SHEET = 'sprite_sheets/chroma.png';
-	Player.SPRITE_WIDTH = 19;
+	Player.SPRITE_WIDTH = 15;
 	Player.SPRITE_HEIGHT = 22;
 	Player.ANIMATIONS = {
-		walk: {
+		idle: {
 			row: 0,
-			length: 9
+			length: 9,
+			increment: 0.25
+		},
+		walk: {
+			row: 1,
+			length: 9,
+			increment: 0.25
+		},
+		run: {
+			row: 2,
+			length: 6,
+			increment: 0.25
+		},
+		jump: {
+			row: 3,
+			length: 3,
+			increment: 0
 		}
 	};
 	Player.WIDTH = 1;
@@ -36,7 +52,7 @@ var Player = (function() {
 	/** {Number} Maximum speed while walking */
 	Player.MAX_WALK_SPEED = 0.1;
 	/** {Number} Maximum speed while running */
-	Player.MAX_RUN_SPEED = 0.4;
+	Player.MAX_RUN_SPEED = 0.3;
 	/** {Number} The initial acceleration when jumping */
 	Player.JUMP_SPEED = 0.4;
 	/** {Number} Maximum vertical speed */
@@ -103,25 +119,43 @@ var Player = (function() {
 	 * @param {Number} scaleFactor - The ratio of pixel to game grid square
 	 */
 	Player.prototype.draw = function (ctx, scaleFactor, screenScroll) {
+		// Update the animation.
+		if (this.ySpeed === 0) {
+			if (this.xSpeed === 0) {
+				this._currentAnimation = Player.ANIMATIONS.idle;
+			} else if (Math.abs(this.xSpeed) <= Player.MAX_WALK_SPEED) {
+				this._currentAnimation = Player.ANIMATIONS.walk;
+			} else {
+				this._currentAnimation = Player.ANIMATIONS.run;
+			}
+		} else {
+			this._currentAnimation = Player.ANIMATIONS.jump;
+			if (this.onGround) {
+				this._currentFrame = 0;
+			} else if (this.ySpeed < 0) {
+				this._currentFrame = 1;
+			} else if (this.ySpeed > 0) {
+				this._currentFrame = 2;
+			}
+		}
+		this._currentFrame += this._currentAnimation.increment;
+		if (this._currentFrame >= this._currentAnimation.length) {
+			this._currentFrame = 0;
+		}
+		
 		// Draw the player's sprite.
 		drawSprite(assetManager.getImage(Player.SPRITE_SHEET),
 			this.x + screenScroll,
-			this.y,
+			this.y + (2 / scaleFactor),
 			this.width,
 			this.height,
-			this._currentFrame,
+			Math.floor(this._currentFrame),
 			this._currentAnimation.row,
 			Player.SPRITE_WIDTH,
 			Player.SPRITE_HEIGHT,
 			this.xSpeed < 0,
 			ctx,
 			scaleFactor);
-		
-		// Update the animation.
-		this._currentFrame++;
-		if (this._currentFrame >= this._currentAnimation.length) {
-			this._currentFrame = 0;
-		}
 	};
 
 	return Player;
