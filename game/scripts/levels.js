@@ -5,7 +5,7 @@ var LEVELS = [
 		"width": 60,
 		"height": 16,
 		"bgColor": "lightgray",
-		"bgImage": "images/bgs/testBg.png",
+		"bgImage": "bgs/title.png",
 		"visRadiusColor": "darkgray",
 		"playerStart": {
 			"x": 4,
@@ -192,9 +192,9 @@ var LEVELS = [
 	}, {
 		"name": "Level 2: Chromacide",
 		"width": 70,
-		"height": 30,
+		"height": 20,
 		"bgColor": "yellow",
-		"bgImage": "images/bgs/testBg.png",
+		"bgImage": "bgs/bg2.png",
 		"visRadiusColor": "#ff20e0",
 		"playerStart": {
 			"x": 2,
@@ -282,7 +282,7 @@ var LEVELS = [
 		"width": 40,
 		"height": 20,
 		"bgColor": "blue",
-		"bgImage": "images/bgs/testBg.png",
+		"bgImage": "bgs/bg3.png",
 		"visRadiusColor": "red",
 		"playerStart": {
 			"x": 2,
@@ -301,7 +301,7 @@ var LEVELS = [
 				"x": 0,
 				"y": 18,
 				"width": 21,
-				"height": 1,
+				"height": 3,
 				"color": "blue"
 			}, {
 				"type": "platform",
@@ -454,7 +454,7 @@ var LEVELS = [
 		"width": 50,
 		"height": 25,
 		"bgColor": "purple",
-		"bgImage": "images/bgs/testBg.png",
+		"bgImage": "bgs/bg4.png",
 		"visRadiusColor": "blue",
 		"playerStart": {
 			"x": 3,
@@ -522,7 +522,8 @@ var LEVELS = [
 		"name": "Level 5: Choices",
 		"width": 60,
 		"height": 60,
-		"bgImage": "images/bgs/testBg.png",
+		"bgColor": "black",
+		"bgImage": "bgs/bg5.png",
 		"playerStart": {
 			"x": 2,
 			"y": 43

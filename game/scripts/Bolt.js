@@ -30,8 +30,17 @@ var Bolt = (function() {
 			return;
 		}
 		ctx.save();
-		ctx.fillStyle = ("black");
-		ctx.fillRect((this.x + screenScroll) * scaleFactor, this.y * scaleFactor, Bolt.SIZE * scaleFactor, Bolt.SIZE * scaleFactor);
+		ctx.fillStyle = 'black';
+		ctx.strokeStyle = 'white';
+		ctx.beginPath();
+		ctx.arc(
+			(this.x + Bolt.SIZE / 2) * scaleFactor,
+			(this.y + Bolt.SIZE / 2) * scaleFactor,
+			(Bolt.SIZE * 0.4) * scaleFactor,
+			0,
+			2 * Math.PI);
+		ctx.fill();
+		ctx.stroke();
 		ctx.restore();
 	};
 	

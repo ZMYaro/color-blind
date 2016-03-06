@@ -31,6 +31,7 @@ var Game = (function () {
 		this._visRadius = 4;
 		this._visRadiusColor = 'white';
 		this._bgColor = 'black';
+		this._bgImage = undefined;
 		
 		// Initialize the input manager.
 		this._inputManager = new InputManager();
@@ -61,6 +62,7 @@ var Game = (function () {
 			var levelJSON = LEVELS[levelNum];
 			this._bgColor = levelJSON.bgColor;
 			this._visRadiusColor = levelJSON.visRadiusColor;
+			this._bgImage = levelJSON.bgImage;
 			this._levelWidth = levelJSON.width;
 			this._levelHeight = levelJSON.height;
 			
@@ -254,7 +256,14 @@ var Game = (function () {
 			this._ctx.globalCompositeOperation = 'destination-over';
 			// TODO: Add background images.
 			this._ctx.fillStyle = this._bgColor;
-			this._ctx.fillRect(0, 0, this._levelWidth * this._scaleFactor, this._levelHeight * this._scaleFactor);
+			this._ctx.fillRect(0, 0, this._canvas.width, this._canvas.height);
+			if (this._bgImage) {
+				this._ctx.drawImage(assetManager.getImage(this._bgImage),
+					0,
+					0,
+					this._levelWidth * this._scaleFactor,
+					this._levelHeight * this._scaleFactor);
+			}
 			this._ctx.restore();
 			
 			raf(this._boundDraw);

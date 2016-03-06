@@ -46,8 +46,11 @@
 					];
 
 				
-				LEVELS.forEach(function () {
-					
+				LEVELS.forEach(function (levelJSON) {
+					if (!levelJSON.bgImage) {
+						return;
+					}
+					imageNames.push(levelJSON.bgImage);
 				});
 				
 				progressBar.max = imageNames.length;

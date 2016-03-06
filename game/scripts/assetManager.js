@@ -91,7 +91,7 @@ var assetManager = (function () {
 			if (fileName in this._images) {
 				return this._images[fileName];
 			}
-			Console.error('Image \u201c' + fileName + '\u201d was requested without having been loaded.');
+			console.error('Image \u201c' + fileName + '\u201d was requested without having been loaded.');
 			return;
 		},
 		
@@ -104,7 +104,7 @@ var assetManager = (function () {
 			if (fileName in this._audioFiles) {
 				return this._audioFiles[fileName];
 			}
-			Console.error('Audio file \u201c' + fileName + '\u201d was requested without having been loaded.');
+			console.error('Audio file \u201c' + fileName + '\u201d was requested without having been loaded.');
 			return;
 		},
 	};
