@@ -103,6 +103,12 @@ var KeyboardManager = (function () {
 		 */
 		_handleKeyDown: function (e) {
 			this._keys[e.keyCode] = true;
+			if (LEFT_KEYS.indexOf(e.keyCode) !== -1 ||
+					RIGHT_KEYS.indexOf(e.KeyCode) !== -1 ||
+					JUMP_KEYS.indexOf(e.KeyCode) !== -1 ||
+					RUN_KEYS.indexOf(e.KeyCode) !== -1) {
+				e.preventDefault();
+			}
 		},
 		
 		/**
