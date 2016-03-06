@@ -1,37 +1,33 @@
-"use strict"
-
-function makePlatform() {
-	var Platform;
-	return Platform = {
-		x : 0,
-		y : 0,
-		width : 0, 
-		height : 0,
-		color : null,
-		_spriteSheet : null,
-		_spriteWidth : 0,
-		_spriteHeight : 0,
-
-
-		/**
-		* updates the game object
-		* @param {player} player - the player object
-		*/
-		update: function(player) {
-
-		}, // end update function
-
-		/**
-		* draws the object to the screen
-		* @param {DrawingContext} ctx - the drawing context on which the collectible will be drawn
-		* @param {int} scale - represents the screen size, allows proper resizing
-		*/
-		draw: function(ctx, scale) {
-			ctx.save();
-			ctx.fillStyle(color);
-			ctx.fillRect(x * scale, y * scale, width * scale, height * scale);
-			ctx.restore();
-		}, // end draw function
-
+var Platform = (function() {
+	'use strict';
+	
+	/**
+	 * Create a new Platform instance.
+	 * @param {Number} x
+	 * @param {Number} y
+	 * @param {Number} width
+	 * @param {Number} height
+	 * @param {String} color - The platform's color as a CSS color
+	 */
+	function Platform(x, y, width, height, color) {
+		GameObject.apply(this, arguments);
+		
+		this._color = color;
 	}
-}
+	
+	Platform.prototype = Object.create(GameObject.prototype);
+	
+	/**
+	 * Draw the platform to the game canvas.
+	 * @param {CanvasRenderingContext2D} ctx - the drawing context on which the collectible will be drawn
+	 * @param {Number} scaleFactor - The ratio of pixel to game grid square
+	 */
+	draw: function(ctx, scaleFactor) {
+		ctx.save();
+		ctx.fillStyle(color);
+		ctx.fillRect(x * scaleFactor y * scaleFactor width * scaleFactor height * scaleFactor);
+		ctx.restore();
+	}
+	
+	return Platform;
+})();
