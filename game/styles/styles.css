@@ -1,5 +1,15 @@
 @charset "UTF-8";
 
+canvas {
+	-ms-interpolation-mode: nearest-neighbor;   /* Older IE */
+	image-rendering: optimizeSpeed;             /* Older versions of FF */
+	image-rendering: -moz-crisp-edges;          /* FF 6.0+ */
+	image-rendering: -webkit-optimize-contrast; /* Safari */
+	image-rendering: -o-crisp-edges;            /* Older Opera */
+	image-rendering: pixelated;                 /* Standardized */
+	image-rendering: crisp-edges;               /* Standardized */
+}
+
 #gameCanvas {
 	position: absolute;
 	left: 0;
