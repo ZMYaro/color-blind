@@ -100,6 +100,9 @@ var GamepadManager = (function () {
 		_getStandardGamepads: function () {
 			var gamepads = [];
 			Array.prototype.slice.call(navigator.getGamepads()).forEach(function (gamepad) {
+				if (!gamepad) {
+					return;
+				}
 				if (gamepad.mapping === 'standard') {
 					gamepads.push(gamepad);
 				}
