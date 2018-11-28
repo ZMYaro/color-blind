@@ -59,7 +59,8 @@ var Player = (function() {
 	Player.MAX_FALL_SPEED = 0.6;
 	/** {Number} The speed at which to consider the player stopped */
 	Player.STOP_THRESHOLD;
-
+	
+	// Extend GameObject.
 	Player.prototype = Object.create(GameObject.prototype);
 	
 	/**
@@ -117,6 +118,7 @@ var Player = (function() {
 	 * Draw the Player to the game canvas.
 	 * @param {CanvasRenderingContext2D} ctx - The rendering context of the game canvas
 	 * @param {Number} scaleFactor - The ratio of pixel to game grid square
+	 * @param {Number} screenScroll - How far to the left the screen has scrolled
 	 */
 	Player.prototype.draw = function (ctx, scaleFactor, screenScroll) {
 		// Update the animation.

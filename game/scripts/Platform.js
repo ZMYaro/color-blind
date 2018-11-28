@@ -19,12 +19,14 @@ var Platform = (function() {
 	/** {Number} The amount by which a player on a platform should overlap the platform */
 	Platform.PLAYER_OVERLAP = 0.01;
 	
+	// Extend GameObject.
 	Platform.prototype = Object.create(GameObject.prototype);
 	
 	/**
 	 * Draw the platform to the game canvas.
 	 * @param {CanvasRenderingContext2D} ctx - The rendering context of the game canvas
 	 * @param {Number} scaleFactor - The ratio of pixel to game grid square
+	 * @param {Number} screenScroll - How far to the left the screen has scrolled
 	 * @override
 	 */
 	Platform.prototype.draw = function (ctx, scaleFactor, screenScroll) {

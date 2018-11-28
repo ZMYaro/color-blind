@@ -14,13 +14,14 @@ var Collectible = (function () {
 		this.collected = false;
 	}
 	
+	// Extend GameObject.
 	Collectible.prototype = Object.create(GameObject.prototype);
 	
 	/**
 	 * Handle the collectible being collected.
 	 * @param {Game} game - The game instance in which the collectible was collected
 	 */
-	Collectible.prototype.collect = function () {
+	Collectible.prototype.collect = function (game) {
 		this.collected = true;
 	}
 	

@@ -40,6 +40,7 @@ var GameObject = (function () {
 		 * Draw the object to the game canvas.
 		 * @param {CanvasRenderingContext2D} ctx - The rendering context of the game canvas
 		 * @param {Number} scaleFactor - The ratio of pixel to game grid square
+		 * @param {Number} screenScroll - How far to the left the screen has scrolled
 		 * @abstract
 		 */
 		draw: function(ctx, scaleFactor, screenScroll) {

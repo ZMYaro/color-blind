@@ -17,12 +17,14 @@ var Door = (function () {
 	Door.HEIGHT = 2;
 	Door.COLOR = 'white';
 	
+	// Extend Collectible.
 	Door.prototype = Object.create(Collectible.prototype);
 	
 	/**
 	 * Draw the door to the game canvas.
 	 * @param {CanvasRenderingContext2D} ctx - The rendering context of the game canvas
 	 * @param {Number} scaleFactor - The ratio of pixel to game grid square
+	 * @param {Number} screenScroll - How far to the left the screen has scrolled
 	 * @override
 	 */
 	Door.prototype.draw = function (ctx, scaleFactor, screenScroll) {

@@ -17,12 +17,14 @@ var Bolt = (function() {
 	Bolt.SPRITE_SHEET = 'sprite_sheets/nut.png';
 	Bolt.SIZE = 1;
 	
+	// Extend Collectible.
 	Bolt.prototype = Object.create(Collectible.prototype);
 	
 	/**
 	 * Draw the bolt to the game canvas.
 	 * @param {CanvasRenderingContext2D} ctx - The rendering context of the game canvas
 	 * @param {Number} scaleFactor - The ratio of pixel to game grid square
+	 * @param {Number} screenScroll - How far to the left the screen has scrolled
 	 * @override
 	 */
 	Bolt.prototype.draw = function (ctx, scaleFactor, screenScroll) {
